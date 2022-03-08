@@ -1,0 +1,31 @@
+
+
+
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-font-size: 24pt;
+    -fx-text-alignment: left;
+    -fx-font-family: 'Hellix Bold';
+    -fx-font-weight: 700;
+    -fx-text-fill: #003366;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-row-cell:hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: red;
+}
+.table-row-cell:odd{
+    -fx-background-color: #93f9b911;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:even{
+    -fx-background-color: #1dbbdd11;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
