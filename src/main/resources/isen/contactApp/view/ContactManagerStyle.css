@@ -1,0 +1,78 @@
+.background {
+    -fx-background-color: #ffffff;
+}
+
+
+.header-text {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: black;
+}
+
+.title-text{
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #003366;
+}
+
+
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.search-field {
+    -fx-border-radius: 5;
+    -fx-border-color: #003366;
+    -fx-border-width: 2;
+    -fx-background-radius: 5;
+    -fx-background-color: #DFE7EE;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 7pt;
+    -fx-text-fill: #003366;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.filter-button {
+    -fx-border-radius: 5;
+    -fx-border-color: #003366;
+    -fx-border-width: 2;
+    -fx-background-radius: 5;
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 7pt;
+    -fx-text-fill: #003366;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.delete-button {
+    -fx-border-radius: 5;
+    -fx-border-color: #003366;
+    -fx-border-width: 2;
+    -fx-background-radius: 5;
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 7pt;
+    -fx-text-fill: #F95849;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.delete-button:hover {
+    -fx-background-color: rgba(249,88,73,0.5);
+}
+
+.delete-button:pressed{
+    -fx-background-color: rgba(249,88,73,1);
+}
+
+.add-button {
+    -fx-border-radius: 5;
+    -fx-border-width: 0;
+    -fx-background-radius: 5;
+    -fx-background-color: #003366;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 7pt;
+    -fx-text-fill: #ffffff;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}

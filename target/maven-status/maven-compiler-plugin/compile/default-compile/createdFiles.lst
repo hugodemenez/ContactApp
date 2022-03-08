@@ -1,3 +1,6 @@
-com/example/contactapp/HelloApplication.class
-com/example/contactapp/HelloController.class
+isen/contactApp/model/Contact.class
+isen/contactApp/view/MainLayoutController.class
 module-info.class
+isen/contactApp/Launcher.class
+isen/contactApp/view/ContactManagerController.class
+isen/contactApp/App.class
