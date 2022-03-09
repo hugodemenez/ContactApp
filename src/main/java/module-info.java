@@ -1,8 +1,6 @@
-module com.example.contactapp {
+module isen.contactapp {
     requires javafx.controls;
     requires javafx.fxml;
-
-
 
     exports isen.contactApp;
     opens isen.contactApp to javafx.fxml;
