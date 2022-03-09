@@ -1,23 +1,17 @@
 @font-face {
-    font-family: 'Hellix';
     src: url('fonts/Hellix-Regular.otf');
-    font-weight: 400;
 }
 
 @font-face {
-    font-family: 'Hellix';
     src: url('fonts/Hellix-Bold.otf');
-    font-weight: 700;
 }
 
 @font-face {
-    font-family: 'Hellix';
     src: url('fonts/Hellix-ExtraBold.otf');
-    font-weight: 1000;
 }
 
 .root{
-    -fx-font-family: 'Hellix';
+    -fx-font-family: 'Hellix-Regular';
 }
 
 .username{
