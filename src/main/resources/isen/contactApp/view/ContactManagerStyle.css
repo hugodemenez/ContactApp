@@ -1,21 +1,8 @@
-@font-face {
-    src: url('fonts/Hellix-Regular.otf');
-}
-
-@font-face {
-    src: url('fonts/Hellix-Bold.otf');
-}
-
-@font-face {
-    src: url('fonts/Hellix-ExtraBold.otf');
-}
-
 .root{
-    -fx-font-family: 'Hellix-Regular';
+    -fx-font-family: 'Hellix';
 }
 
 .username{
-    -fx-font-weight: 400;
     -fx-font-size: 12pt;
 }
 
@@ -152,15 +139,16 @@
     -fx-padding: 0.0em;
 }
 
+
 .table-row-cell:even{
     -fx-background-color: #1dbbdd11;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 
+
 .logo{
     -fx-font-size: 24pt;
-    -fx-font-weight: 1000;
 }
 
 .split-pane:horizontal > .split-pane-divider {
