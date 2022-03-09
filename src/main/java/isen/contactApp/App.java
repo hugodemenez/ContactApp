@@ -3,6 +3,7 @@ package isen.contactApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -23,8 +24,8 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-
-		stage.setTitle("Contact App for a better future");
+		stage.getIcons().add(new Image("file:resources/isen.contactApp/images/group_add.png"));
+		stage.setTitle("The Best Contact App");
 		// Load the main layout from file
 		mainLayout = loadFXML("HeaderBar");
 
