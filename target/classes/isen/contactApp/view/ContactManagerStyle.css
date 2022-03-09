@@ -1,29 +1,38 @@
 @font-face {
-    font-family: 'Hellix-Regular';
+    font-family: 'Hellix Regular';
     src: url('../fonts/Hellix-Regular.otf');
 }
 
 @font-face {
-    font-family: 'Hellix-Bold';
+    font-family: 'Hellix Bold';
     src: url('../fonts/Hellix-Bold.otf');
 }
 
 @font-face {
-    font-family: 'Hellix-ExtraBold';
+    font-family: 'Hellix ExtraBold';
     src: url('../fonts/Hellix-ExtraBold.otf');
 }
-
 
 .background {
     -fx-background-color: #ffffff;
 }
 
-
-
 .title-text{
-    -fx-font-size: 24pt;
+    -fx-font-size: 24px;
     -fx-font-family: 'Hellix Bold';
     -fx-text-fill: #003366;
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+
+.title-text:focused {
+    -fx-font-size: 24px;
+    -fx-font-family: 'Hellix Bold';
+    -fx-text-fill: #003366;
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
 }
 
 .text-field {
@@ -147,4 +156,16 @@
     -fx-background-color: #1dbbdd11;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
+}
+
+.logo{
+    -fx-font: "Hellix ExtraBold";
+    -fx-font-size: 32pt;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-background-color: transparent;
+}
+.split-pane:vertical > .split-pane-divider {
+    -fx-background-color: transparent;
 }
