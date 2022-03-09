@@ -18,7 +18,7 @@ import isen.db.entities.Contact;
 public class ContactsDAOs {
 
 	
-	public void add(Contact contact) {
+	public void addContact(Contact contact) {
 		try (Connection connection = DataSourceFactory.getDataSource().getConnection()) {
 	        String sqlQuery = "INSERT INTO contacts(lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES(?,?,?,?,?,?,?)";
 	        try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {

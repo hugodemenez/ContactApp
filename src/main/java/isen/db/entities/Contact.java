@@ -28,7 +28,6 @@ public class Contact {
 	public Contact(int idPerson, String lastname, String firstname, String nickname, String phone_number,
 			String address, String email_address, Date birth_date) {
 		super();
-		this.idPerson = idPerson;
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.nickname = nickname;
