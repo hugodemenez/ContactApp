@@ -21,9 +21,7 @@ public class Contact {
 	private Date birth_date;
 	
 	//Methods
-	
-	public Contact() {
-	}
+
 	
 	public Contact(int idPerson, String lastname, String firstname, String nickname, String phone_number,
 			String address, String email_address, Date birth_date) {
