@@ -1,6 +1,7 @@
 module isen.contactapp {
     requires javafx.controls;
     requires javafx.fxml;
+	requires java.sql;
 
     exports isen.contactApp;
     opens isen.contactApp to javafx.fxml;
