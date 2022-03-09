@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +25,10 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
+		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-Regular.otf"), 10);
+		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-ExtraBold.otf"), 10);
+		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-Bold.otf"), 10);
+		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-SemiBold.otf"), 10);
 		stage.getIcons().add(new Image("file:resources/isen.contactApp/images/group_add.png"));
 		stage.setTitle("The Best Contact App");
 		// Load the main layout from file

@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="450.0" prefWidth="600.0" stylesheets="@ContactManagerStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.contactApp.view.MainLayoutController">
+<BorderPane prefHeight="450.0" prefWidth="600.0" stylesheets="@ContactAppStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.contactApp.view.MainLayoutController">
    <top>
-      <AnchorPane prefHeight="40.0" prefWidth="600.0" styleClass="menu-bar" stylesheets="@ContactManagerStyle.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="40.0" prefWidth="600.0" styleClass="menu-bar" stylesheets="@ContactAppStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Label text="ContactApp" textFill="#003366" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="0.0">
+            <Label onMousePressed="#gotoHome" styleClass="logo" text="ContactApp" textFill="#003366" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="0.0">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="1.0" />
                </font>
             </Label>
-            <Label styleClass="label-header" stylesheets="@ContactManagerStyle.css" text="Dupont Henri" textFill="#047967" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="0.0">
+            <Label styleClass="username" stylesheets="@ContactAppStyle.css" text="Dupont Henri" textFill="#047967" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="24.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bell.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
          </children>
       </AnchorPane>

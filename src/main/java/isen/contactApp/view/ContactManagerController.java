@@ -1,5 +1,6 @@
 package isen.contactApp.view;
 
+import isen.contactApp.App;
 import isen.contactApp.model.Contact;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -32,6 +33,9 @@ public class ContactManagerController {
     private Contact currentContact;
 
 
+    public void addContact() {
+        App.showView("AddContact");
+    }
 
 
 }
