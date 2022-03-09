@@ -1,6 +1,7 @@
 module com.example.contactapp {
     requires javafx.controls;
     requires javafx.fxml;
+	requires java.sql;
 
 
 
