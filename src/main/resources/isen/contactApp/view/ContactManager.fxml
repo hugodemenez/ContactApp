@@ -33,7 +33,7 @@
                <children>
                   <AnchorPane fx:id="formPane" layoutX="119.0" layoutY="137.0" prefHeight="348.0" prefWidth="417.0" styleClass="split-pane" stylesheets="@ContactManagerStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TextField layoutX="14.0" layoutY="14.0" promptText="Default List Name" styleClass="title-text" text="Work">
+                        <TextField layoutX="14.0" layoutY="21.0" maxHeight="24.0" minHeight="24.0" promptText="Default List Name" styleClass="title-text" text="Work">
                            <font>
                               <Font name="Hellix ExtraBold" size="35.0" />
                            </font>

@@ -1,16 +1,28 @@
 @font-face {
-    font-family: 'Hellix Regular';
-    src: url('../fonts/Hellix-Regular.otf');
+    font-family: 'Hellix';
+    src: url('fonts/Hellix-Regular.otf');
+    font-weight: 400;
 }
 
 @font-face {
-    font-family: 'Hellix Bold';
-    src: url('../fonts/Hellix-Bold.otf');
+    font-family: 'Hellix';
+    src: url('fonts/Hellix-Bold.otf');
+    font-weight: 700;
 }
 
 @font-face {
-    font-family: 'Hellix ExtraBold';
-    src: url('../fonts/Hellix-ExtraBold.otf');
+    font-family: 'Hellix';
+    src: url('fonts/Hellix-ExtraBold.otf');
+    font-weight: 1000;
+}
+
+.root{
+    -fx-font-family: 'Hellix';
+}
+
+.username{
+    -fx-font-weight: 400;
+    -fx-font-size: 12pt;
 }
 
 .background {
@@ -19,7 +31,6 @@
 
 .title-text{
     -fx-font-size: 24px;
-    -fx-font-family: 'Hellix Bold';
     -fx-text-fill: #003366;
     -fx-background-color: -fx-text-box-border, -fx-background ;
     -fx-background-insets: 0, 0 0 1 0 ;
@@ -28,7 +39,6 @@
 
 .title-text:focused {
     -fx-font-size: 24px;
-    -fx-font-family: 'Hellix Bold';
     -fx-text-fill: #003366;
     -fx-background-color: -fx-text-box-border, -fx-background ;
     -fx-background-insets: 0, 0 0 1 0 ;
@@ -37,7 +47,6 @@
 
 .text-field {
     -fx-font-size: 12pt;
-    -fx-font-family: 'Hellix';
 }
 
 .search-field {
@@ -46,7 +55,6 @@
     -fx-border-width: 2;
     -fx-background-radius: 5;
     -fx-background-color: #DFE7EE;
-    -fx-font-family: 'Hellix';
     -fx-font-size: 12pt;
     -fx-text-fill: #003366;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
@@ -58,7 +66,6 @@
     -fx-border-width: 2;
     -fx-background-radius: 5;
     -fx-background-color: #ffffff;
-    -fx-font-family: 'Hellix';
     -fx-font-size: 12pt;
     -fx-text-fill: #003366;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
@@ -78,7 +85,6 @@
     -fx-border-width: 2;
     -fx-background-radius: 5;
     -fx-background-color: #ffffff;
-    -fx-font-family: 'Hellix';
     -fx-font-size: 12pt;
     -fx-text-fill: #F95849;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
@@ -98,7 +104,6 @@
     -fx-border-width: 2;
     -fx-background-radius: 5;
     -fx-background-color: #ffffff;
-    -fx-font-family: 'Hellix';
     -fx-font-size: 12pt;
     -fx-text-fill: rgba(0,51,102,1);
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
@@ -117,7 +122,6 @@
     -fx-border-width: 0;
     -fx-background-radius: 5;
     -fx-background-color: rgba(0,51,102,1);
-    -fx-font-family: 'Hellix';
     -fx-font-size: 12pt;
     -fx-text-fill: #ffffff;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
@@ -135,7 +139,6 @@
 .table-view .column-header {
     -fx-background-color: rgba(0,51,102,0.1);
     -fx-font-size: 14pt;
-    -fx-font-family: 'Hellix ExtraBold';
     -fx-text-fill: black;
 }
 
@@ -162,8 +165,8 @@
 }
 
 .logo{
-    -fx-font: "Hellix ExtraBold";
-    -fx-font-size: 32pt;
+    -fx-font-size: 24pt;
+    -fx-font-weight: 1000;
 }
 
 .split-pane:horizontal > .split-pane-divider {
