@@ -1,10 +1,3 @@
-isen/db/daos/ContactsDAOs.class
-isen/db/daos/DataSourceFactory.class
-isen/db/entities/Contact.class
+isen/contactApp/model/Contact.class
 module-info.class
 isen/contactApp/view/ContactManagerController.class
-isen/contactApp/view/AddContact.class
-isen/contactApp/model/Contact.class
-isen/contactApp/view/MainLayoutController.class
-isen/contactApp/Launcher.class
-isen/contactApp/App.class
