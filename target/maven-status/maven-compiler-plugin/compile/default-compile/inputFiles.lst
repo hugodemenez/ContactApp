@@ -2,7 +2,6 @@
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/view/MainLayoutController.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/view/ContactManagerController.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/db/daos/ContactsDAOs.java
-/Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/model/Contact.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/Launcher.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/App.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/db/entities/Contact.java

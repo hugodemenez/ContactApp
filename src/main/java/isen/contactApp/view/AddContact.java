@@ -9,6 +9,6 @@ public class AddContact {
     public void handleClickAddContact(){
         // Recupération des champs pour créer la classe contact qu'on passe en parametre de la classe ContactsDAOs
 
-        //new ContactsDAOs().add(new Contact());
+        new ContactsDAOs().add(new Contact());
     }
 }
