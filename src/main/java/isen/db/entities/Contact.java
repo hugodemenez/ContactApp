@@ -1,7 +1,7 @@
 /**
  * 
  */
-package db.entities;
+package isen.db.entities;
 
 import java.sql.Date; //Format AAAA-MM-JJ
 
@@ -11,7 +11,7 @@ import java.sql.Date; //Format AAAA-MM-JJ
  */
 public class Contact {
 
-	private int idperson;
+	private int idPerson;
 	private String lastname;
 	private String firstname;
 	private String nickname;
@@ -22,11 +22,25 @@ public class Contact {
 	
 	//Methods
 	
+	public Contact() {
+	}
 	
+	public Contact(int idPerson, String lastname, String firstname, String nickname, String phone_number,
+			String address, String email_address, Date birth_date) {
+		super();
+		this.idPerson = idPerson;
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.nickname = nickname;
+		this.phone_number = phone_number;
+		this.address = address;
+		this.email_address = email_address;
+		this.birth_date = birth_date;
+	}
 	
 	//Getter and Setter
 	public int getIdperson() {
-		return idperson;
+		return idPerson;
 	}
 	public String getLastname() {
 		return lastname;
