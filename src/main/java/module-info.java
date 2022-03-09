@@ -2,6 +2,7 @@ module com.example.contactapp {
     requires javafx.controls;
     requires javafx.fxml;
 	requires java.sql;
+	requires org.xerial.sqlitejdbc;
 
 
 

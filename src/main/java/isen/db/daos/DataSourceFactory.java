@@ -1,4 +1,4 @@
-package db.daos;
+package isen.db.daos;
 
 import javax.sql.DataSource;
 
