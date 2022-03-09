@@ -19,7 +19,7 @@
 }
 
 .title-text:focused {
-    -fx-font-size: 24px;
+    -fx-font-size: 12pt;
     -fx-text-fill: #003366;
     -fx-background-color: -fx-text-box-border, -fx-background ;
     -fx-background-insets: 0, 0 0 1 0 ;
@@ -119,7 +119,7 @@
 
 .table-view .column-header {
     -fx-background-color: rgba(0,51,102,0.1);
-    -fx-font-size: 14pt;
+    -fx-font-size: 7pt;
     -fx-text-fill: black;
 }
 

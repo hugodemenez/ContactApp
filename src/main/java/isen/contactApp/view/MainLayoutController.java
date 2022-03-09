@@ -10,11 +10,8 @@ public class MainLayoutController {
 	}
 
 	public void gotoHome() {
-		App.showView("HomeScreen");
-	}
-
-	public void gotoContactManager() {
 		App.showView("ContactManager");
 	}
+
 
 }
