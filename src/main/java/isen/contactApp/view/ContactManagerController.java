@@ -98,7 +98,6 @@ public class ContactManagerController {
                         System.out.println("unable to process"));
 
 
-
                 new Thread(task).start();
                 */
 
