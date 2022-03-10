@@ -51,4 +51,11 @@ public class AddContact {
         App.showView("ContactManager");
     }
 
+
+    public void fillContactFields(Contact contact){
+
+
+        lastName.setText(contact.getLastname());
+
+    }
 }

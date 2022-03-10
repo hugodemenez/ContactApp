@@ -5,6 +5,8 @@ import isen.contactApp.entities.Contact;
 import isen.contactApp.entities.ListContacts;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.*;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -70,7 +72,41 @@ public class ContactManagerController {
         nickNameColumn.setCellValueFactory(new nickNameValueFactory());
         phoneNumberColumn.setCellValueFactory(new phoneNumberValueFactory());
 
+
+
         populateList();
+
+        contactsTable.getSelectionModel().selectedItemProperty().addListener(new ContactsChangeListener() {
+            @Override
+            public void handleNewValue(Contact newValue) {
+                App.showView("AddContact");
+
+                // There is an error because view not fully loaded
+
+                /*
+                Task<String> task = new Task<String>() {
+                    @Override
+                    public String call() throws InterruptedException {
+                        Thread.sleep(2000);
+                        return "page loaded";
+                    }
+                };
+
+                task.setOnSucceeded(e ->
+                        new AddContact().fillContactFields(newValue));
+                task.setOnFailed(e ->
+                        System.out.println("unable to process"));
+
+
+
+                new Thread(task).start();
+                */
+
+
+
+
+            }
+        });
         resetView();
     }
 
