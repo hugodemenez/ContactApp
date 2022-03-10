@@ -44,10 +44,8 @@ public class ContactsDAOs {
 
 		try(Connection connection = getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
-				try(ResultSet results = statement.executeQuery("SELECT * FROM film JOIN genre ON film.genre_id = genre.idgenre")){
+				try(ResultSet results = statement.executeQuery("SELECT * FROM person")){
 					while(results.next()){
-
-
 						listOfContacts.add( new Contact(
 								results.getInt("idperson"),
 								results.getString("lastname"),
@@ -56,7 +54,7 @@ public class ContactsDAOs {
 								results.getString("phone_number"),
 								results.getString("address"),
 								results.getString("email_address"),
-								results.getDate("birthdate")));
+								results.getDate("birth_date")));
 
 					}
 				}
