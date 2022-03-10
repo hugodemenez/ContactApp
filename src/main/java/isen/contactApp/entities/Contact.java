@@ -1,7 +1,7 @@
 /**
  * 
  */
-package isen.db.entities;
+package isen.contactApp.entities;
 
 import java.sql.Date; //Format AAAA-MM-JJ
 
@@ -22,9 +22,21 @@ public class Contact {
 	
 	//Methods
 	public Contact(){}
-	
-	public Contact(int idPerson, String lastname, String firstname, String nickname, String phone_number,
+	// Constructor without id
+	public Contact(String lastname, String firstname, String nickname, String phone_number,
 			String address, String email_address, Date birth_date) {
+		super();
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.nickname = nickname;
+		this.phone_number = phone_number;
+		this.address = address;
+		this.email_address = email_address;
+		this.birth_date = birth_date;
+	}
+	//Full constructor
+	public Contact(int idPerson, String lastname, String firstname, String nickname, String phone_number,
+				   String address, String email_address, Date birth_date) {
 		super();
 		this.lastname = lastname;
 		this.firstname = firstname;

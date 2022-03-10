@@ -116,6 +116,23 @@
     -fx-background-color: rgba(0,0,0,1);
 }
 
+.back-button {
+    -fx-border-radius: 5;
+    -fx-border-width: 0;
+    -fx-background-radius: 5;
+    -fx-background-color: rgba(0,51,102,1);
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(0,51,102,0.5);
+}
+
+.back-button:pressed{
+    -fx-background-color: rgba(0,0,0,1);
+}
 
 .table-view .column-header {
     -fx-background-color: rgba(0,51,102,0.1);

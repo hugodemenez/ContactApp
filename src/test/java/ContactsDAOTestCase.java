@@ -1,17 +1,19 @@
-import isen.db.daos.ContactsDAOs;
-import isen.db.daos.DataSourceFactory;
+import isen.contactApp.daos.ContactsDAOs;
+import isen.contactApp.daos.DataSourceFactory;
+import isen.contactApp.entities.Contact;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.time.LocalDate;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ContactsDAOTestCase {
 
-        private ContactsDAOs contactDao = new ContactsDAOs();
+        private final ContactsDAOs contactDao = new ContactsDAOs();
 
         @Before
         public void initDb() throws Exception {
@@ -31,7 +33,28 @@ public class ContactsDAOTestCase {
             connection.close();
         }
 
-
+    @Test
+    public void shouldAddContact() throws Exception {
+        // WHEN
+        Contact contact = new Contact(
+                0,
+                "DEMENEZ",
+                "Hugo",
+                "H.DEMENEZ",
+                "0600000000",
+                "5 rue de l'avenue",
+                "hugo.demenez@student.junia.com",
+                Date.valueOf("2022-03-09"));
+        contactDao.addContactToDb(contact);
+        // THEN
+        Connection connection = DataSourceFactory.getDataSource().getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM person");
+        assertThat(resultSet.next()).isTrue();
+        resultSet.close();
+        statement.close();
+        connection.close();
+    }
 
 
 }

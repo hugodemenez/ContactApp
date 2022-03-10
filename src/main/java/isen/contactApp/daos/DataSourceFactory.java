@@ -1,4 +1,4 @@
-package isen.db.daos;
+package isen.contactApp.daos;
 
 import javax.sql.DataSource;
 

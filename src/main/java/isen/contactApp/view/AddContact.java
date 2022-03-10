@@ -1,14 +1,54 @@
 package isen.contactApp.view;
 
-import isen.db.daos.ContactsDAOs;
-import isen.db.entities.Contact;
+import isen.contactApp.App;
+import isen.contactApp.daos.ContactsDAOs;
+import isen.contactApp.entities.Contact;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+
+import java.sql.Date;
+import java.time.ZoneId;
 
 public class AddContact {
+    @FXML
+    private TextField lastName;
+
+    @FXML
+    private TextField firstName;
+
+    @FXML
+    private TextField emailAddress;
+
+    @FXML
+    private TextField phoneNumber;
+
+
+    @FXML
+    private DatePicker birthDate;
+
+    @FXML
+    private ChoiceBox<String> gender;
+
+    @FXML
+    private TextField address;
+
+    @FXML
+    private TextField nickName;
+
 
 
     public void handleClickAddContact(){
-        // Recupération des champs pour créer la classe contact qu'on passe en parametre de la classe ContactsDAOs
+        // Collecting fields to instantiate contact Class to pass into addContactToDb from ContactsDAOs class
+        java.util.Date date = Date.from(birthDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+                // Add contact to database through the DAO
+        new ContactsDAOs().addContactToDb(new Contact(lastName.getText(), firstName.getText(), nickName.getText(), phoneNumber.getText(),
+                address.getText(), emailAddress.getText(), new java.sql.Date(date.getTime()) ));
 
-        new ContactsDAOs().addContact(new Contact());
+        gotoHome();
     }
+
+    public void gotoHome() {
+        App.showView("ContactManager");
+    }
+
 }

@@ -8,5 +8,7 @@ module isen.contactapp {
     opens isen.contactApp to javafx.fxml;
     exports isen.contactApp.view;
     opens isen.contactApp.view to javafx.fxml;
+    exports isen.contactApp.entities;
+    opens isen.contactApp.entities to javafx.fxml;
 
 }
