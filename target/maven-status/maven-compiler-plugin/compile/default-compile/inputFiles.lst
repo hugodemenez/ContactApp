@@ -1,4 +1,4 @@
-/Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/view/AddContact.java
+/Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/view/AddContactController.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/entities/Contact.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/view/ContactManagerController.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/util/phoneNumberValueFactory.java
@@ -9,7 +9,6 @@
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/util/lastNameValueFactory.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/entities/ListContacts.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/App.java
-/Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/module-info.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/util/addressValueFactory.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/util/ContactsChangeListener.java
 /Users/hugodemenez/IdeaProjects/ContactApp/src/main/java/isen/contactApp/view/MainLayoutController.java

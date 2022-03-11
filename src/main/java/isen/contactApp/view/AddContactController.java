@@ -5,11 +5,16 @@ import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.sql.Date;
 import java.time.ZoneId;
+import java.util.Objects;
 
-public class AddContact {
+public class AddContactController {
     @FXML
     private TextField lastName;
 
@@ -35,7 +40,31 @@ public class AddContact {
     @FXML
     private TextField nickName;
 
+    @FXML
+    private Button addButton;
 
+    @FXML
+    private ImageView avatar;
+
+    @FXML
+    public void initializeContactData(Contact contact){
+        lastName.setText(contact.getLastname());
+        firstName.setText(contact.getFirstname());
+        emailAddress.setText(contact.getEmail_address());
+        phoneNumber.setText(contact.getPhone_number());
+        birthDate.setValue(contact.getBirth_date().toLocalDate());
+        address.setText(contact.getAddress());
+        nickName.setText(contact.getNickname());
+        addButton.setText("Update");
+        avatar.setImage(new Image("/isen/contactApp/images/"+contact.getAvatarName()+".png"));
+    }
+
+    public void handleClickChangeImage(){
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(App.stage);
+        System.out.println(selectedFile.getAbsolutePath());
+        avatar.setImage(new Image(selectedFile.getAbsolutePath()));
+    }
 
     public void handleClickAddContact(){
         // Collecting fields to instantiate contact Class to pass into addContactToDb from ContactsDAOs class
@@ -52,10 +81,5 @@ public class AddContact {
     }
 
 
-    public void fillContactFields(Contact contact){
 
-
-        lastName.setText(contact.getLastname());
-
-    }
 }

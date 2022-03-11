@@ -4,6 +4,7 @@
 package isen.contactApp.entities;
 
 import java.sql.Date; //Format AAAA-MM-JJ
+import java.time.LocalDate;
 
 /**
  * @author dumes
@@ -19,13 +20,24 @@ public class Contact {
 	private String address;
 	private String email_address;
 	private Date birth_date;
-	
-	//Methods
-	public Contact(){}
+	private Boolean selected;
+	private String avatarName;
+
+	// Default constructor
+	public Contact(){
+		this.lastname = "lastname";
+		this.firstname = "firstname";
+		this.nickname = "nickname";
+		this.phone_number = "phone_number";
+		this.address = "address";
+		this.email_address = "email_address";
+		this.birth_date = Date.valueOf(LocalDate.now());
+		this.selected = false;
+	}
+
 	// Constructor without id
 	public Contact(String lastname, String firstname, String nickname, String phone_number,
 			String address, String email_address, Date birth_date) {
-		super();
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.nickname = nickname;
@@ -33,11 +45,13 @@ public class Contact {
 		this.address = address;
 		this.email_address = email_address;
 		this.birth_date = birth_date;
+		this.selected = false;
 	}
-	//Full constructor
+
+	// Full constructor
 	public Contact(int idPerson, String lastname, String firstname, String nickname, String phone_number,
 				   String address, String email_address, Date birth_date) {
-		super();
+		this.idPerson = idPerson;
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.nickname = nickname;
@@ -45,15 +59,16 @@ public class Contact {
 		this.address = address;
 		this.email_address = email_address;
 		this.birth_date = birth_date;
+		this.selected = false;
 	}
-	
+
+
+
 	//Getter and Setter
 	public int getIdperson() {
 		return idPerson;
 	}
-	public String getLastname() {
-		return lastname;
-	}
+	public String getLastname() {return lastname;}
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
@@ -93,6 +108,12 @@ public class Contact {
 	public void setBirth_date(Date birth_date) {
 		this.birth_date = birth_date;
 	}
-	
 
+	public Boolean getSelected() {
+		return selected;
+	}
+
+    public String getAvatarName() {
+		return "user_male";
+    }
 }

@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@ContactAppStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.contactApp.view.AddContact">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" stylesheets="@ContactAppStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.contactApp.view.AddContactController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="47.0" prefHeight="532.0" prefWidth="1179.0">
          <children>
-            <Button layoutX="1062.0" layoutY="419.0" mnemonicParsing="false" onMouseClicked="#handleClickAddContact" prefHeight="33.0" prefWidth="89.0" styleClass="add-button" text="Add">
+            <Button fx:id="addButton" layoutX="1059.0" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleClickAddContact" prefHeight="33.0" styleClass="add-button" text="Add">
                <graphic>
                   <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -26,7 +26,7 @@
                   <Font size="7.0" />
                </font>
             </Button>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="203.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" layoutX="203.0" layoutY="117.0" onMouseClicked="#handleClickChangeImage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/user_male.png" />
                </image>

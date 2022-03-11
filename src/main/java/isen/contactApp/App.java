@@ -20,11 +20,12 @@ import java.io.IOException;
 public class App extends Application {
 
 	private static Scene scene;
-
+	public static Stage stage;
 	private static BorderPane mainLayout;
 
 	@Override
 	public void start(Stage stage) throws IOException {
+		App.stage = stage;
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-Regular.otf"), 10);
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-ExtraBold.otf"), 10);
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-Bold.otf"), 10);
@@ -49,6 +50,23 @@ public class App extends Application {
 	private static <T> T loadFXML(String fxml) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/isen/contactApp/view/" + fxml + ".fxml"));
 		return fxmlLoader.load();
+	}
+
+	public static FXMLLoader FXMLloader(String fxml){
+		return new FXMLLoader(App.class.getResource("/isen/contactApp/view/" + fxml + ".fxml"));
+	}
+
+	public static Scene getScene() {
+		return scene;
+	}
+
+
+	public static BorderPane getMainLayout() {
+		return mainLayout;
+	}
+
+	public static void setMainLayout(BorderPane mainLayout) {
+		App.mainLayout = mainLayout;
 	}
 
 	public static void main(String[] args) {

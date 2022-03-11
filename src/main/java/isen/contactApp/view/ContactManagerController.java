@@ -5,11 +5,18 @@ import isen.contactApp.entities.Contact;
 import isen.contactApp.entities.ListContacts;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.*;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
+
 
 import java.sql.Date;
 
@@ -21,6 +28,8 @@ public class ContactManagerController {
 
     @FXML
     private TableColumn<Contact, String> lastNameColumn;
+
+
 
     @FXML
     private TableColumn<Contact, String> firstNameColumn;
@@ -72,41 +81,26 @@ public class ContactManagerController {
         nickNameColumn.setCellValueFactory(new nickNameValueFactory());
         phoneNumberColumn.setCellValueFactory(new phoneNumberValueFactory());
 
-
-
         populateList();
 
         contactsTable.getSelectionModel().selectedItemProperty().addListener(new ContactsChangeListener() {
             @Override
             public void handleNewValue(Contact newValue) {
-                App.showView("AddContact");
+                // There was an error because view was not fully loaded
+                // So we created a new loader
+                FXMLLoader loader = App.FXMLloader("AddContact");
 
-                // There is an error because view not fully loaded
+                try {
+                    App.getMainLayout().setCenter(loader.load());
+                    AddContactController controller = loader.getController();
+                    controller.initializeContactData(newValue);
 
-                /*
-                Task<String> task = new Task<String>() {
-                    @Override
-                    public String call() throws InterruptedException {
-                        Thread.sleep(2000);
-                        return "page loaded";
-                    }
-                };
-
-                task.setOnSucceeded(e ->
-                        new AddContact().fillContactFields(newValue));
-                task.setOnFailed(e ->
-                        System.out.println("unable to process"));
-
-
-                new Thread(task).start();
-                */
-
-
-
-
+                } catch(Exception exception) {
+                    System.out.println(exception.getMessage());
+                }
             }
         });
-        resetView();
+
     }
 
 

@@ -8,15 +8,13 @@ isen/contactApp/entities/ListContacts.class
 isen/contactApp/service/ContactService$QuestionServiceHolder.class
 isen/contactApp/entities/Contact.class
 isen/contactApp/util/emailAddressValueFactory.class
-module-info.class
 isen/contactApp/util/lastNameValueFactory.class
 isen/contactApp/view/ContactManagerController.class
-isen/contactApp/view/ContactManagerController$1$1.class
 isen/contactApp/util/birthDateValueFactory.class
 isen/contactApp/daos/DataSourceFactory.class
 isen/contactApp/service/ContactService.class
-isen/contactApp/view/AddContact.class
 isen/contactApp/view/MainLayoutController.class
 isen/contactApp/Launcher.class
+isen/contactApp/view/AddContactController.class
 isen/contactApp/App.class
 isen/contactApp/util/ContactsChangeListener.class
