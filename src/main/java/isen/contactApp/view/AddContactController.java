@@ -8,6 +8,8 @@ import isen.contactApp.App;
 import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
 import isen.contactApp.service.ContactService;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -17,6 +19,7 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.sql.Date;
 import java.time.ZoneId;
+import java.util.Locale;
 
 public class AddContactController {
     @FXML
@@ -58,6 +61,13 @@ public class AddContactController {
         gender.getItems().add("Woman");
         gender.getItems().add("Unset");
         gender.setValue("Man");
+
+        gender.getSelectionModel()
+                .selectedItemProperty()
+                //.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> System.out.println("/isen/contactApp/view/user_"+newValue.toLowerCase(Locale.ROOT)+".png"));
+                .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> avatar.setImage(new Image("/isen/contactApp/view/user_"+newValue.toLowerCase(Locale.ROOT)+".png")));
+
+
     }
 
     @FXML
