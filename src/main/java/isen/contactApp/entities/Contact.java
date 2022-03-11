@@ -3,6 +3,12 @@
  */
 package isen.contactApp.entities;
 
+import ezvcard.VCard;
+import ezvcard.property.Address;
+import ezvcard.property.Gender;
+import ezvcard.property.StructuredName;
+import ezvcard.property.Telephone;
+
 import java.sql.Date; //Format AAAA-MM-JJ
 import java.time.LocalDate;
 
@@ -63,7 +69,37 @@ public class Contact {
 	}
 
 
+	public VCard generateVcard(){
+		VCard vcard = new VCard();
 
+		// Setting up name
+		StructuredName n = new StructuredName();
+		n.setFamily(lastname);
+		n.setGiven(firstname);
+
+		// Adding name to vcard
+		vcard.setStructuredName(n);
+
+		// Adding gender to vcard
+		vcard.setGender(new Gender(gender));
+
+		// Adding nickname to vcard
+		vcard.setNickname(nickname);
+
+		// Setting up right format  for address
+		Address addressVCard = new Address();
+		addressVCard.setStreetAddress(address);
+		vcard.addAddress(addressVCard);
+
+		// Adding email address
+		vcard.addEmail(email_address);
+
+		// Adding phone number
+		vcard.addTelephoneNumber(new Telephone(phone_number));
+
+		return vcard;
+
+	}
 
 
 	//Getter and Setter

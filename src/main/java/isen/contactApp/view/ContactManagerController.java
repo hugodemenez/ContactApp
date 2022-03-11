@@ -1,5 +1,8 @@
 package isen.contactApp.view;
 
+import ezvcard.Ezvcard;
+import ezvcard.VCard;
+import ezvcard.property.StructuredName;
 import isen.contactApp.App;
 import isen.contactApp.entities.Contact;
 import isen.contactApp.entities.ListContacts;
@@ -7,12 +10,17 @@ import isen.contactApp.service.ContactService;
 import isen.contactApp.util.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
-
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 
 public class ContactManagerController {
@@ -44,7 +52,8 @@ public class ContactManagerController {
     @FXML
     private TableColumn<Contact, String> emailAddressColumn;
 
-
+    @FXML
+    private ProgressIndicator indicator;
 
     @FXML
     private TableView<ListContacts> listsTable;
@@ -103,6 +112,27 @@ public class ContactManagerController {
     }
 
 
+
+
+    @FXML
+    public void handleClickExportContacts(){
+        List<VCard> vcards = new ArrayList<VCard>();
+
+        for(Contact contact : contactsTable.getItems()){
+            VCard vcard = contact.generateVcard();
+            vcards.add(vcard);
+        }
+
+
+        File file = new File("contacts.vcf");
+        try {
+            Ezvcard.write(vcards).prodId(false).go(file);
+            indicator.setProgress(1F);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void goTo(){
         App.showView("ContactManager");

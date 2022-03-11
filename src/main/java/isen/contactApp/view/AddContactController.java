@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.time.ZoneId;
 import java.util.Locale;
@@ -93,23 +94,20 @@ public class AddContactController {
 
 
     // Function to call when clicking on export button
-    public void handleClickExportVCard(){
-        VCard vcard = new VCard();
-
-        StructuredName n = new StructuredName();
-        n.setFamily(lastName.getText());
-        n.setGiven(firstName.getText());
-        n.getPrefixes().add(gender.getValue());
-        vcard.setStructuredName(n);
-
-        vcard.setFormattedName(lastName.getText()+firstName.getText());
-
-        String str = Ezvcard.write(vcard).version(VCardVersion.V4_0).go();
+    public void handleClickExportVCard() throws IOException {
+        VCard vcard = contact.generateVcard();
+        //write vCard
+        File file = new File(contact.getLastname()+contact.getFirstname()+".vcf");
+        System.out.println("Writing " + file.getName() + "...");
+        Ezvcard.write(vcard).version(VCardVersion.V3_0).go(file);
     }
 
     // Function to call when clicking on delete button
     public void handleClickDelete(){
+        // Setting cursor on the first element
         lastName.requestFocus();
+
+        // Clearing fields
         lastName.clear();
         firstName.clear();
         emailAddress.clear();
@@ -117,7 +115,7 @@ public class AddContactController {
         birthDate.setValue(null);
         address.clear();
         nickName.clear();
-        addButton.setText("Add");
+
 
 
         // Remove contact from the db if we have selected a contact
@@ -131,10 +129,14 @@ public class AddContactController {
 
     // Function to call when clicking on image
     public void handleClickChangeImage(){
+
+        /* Not used yet, instead (changed image depending on gender)
+
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(App.stage);
         System.out.println(selectedFile.getAbsolutePath());
         avatar.setImage(new Image(selectedFile.getAbsolutePath()));
+         */
     }
 
 
