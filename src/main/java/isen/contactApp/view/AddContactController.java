@@ -13,10 +13,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
@@ -105,12 +108,19 @@ public class AddContactController {
     public void handleClickExportVCard() throws IOException {
 
         // If the contact is created we are able to create its vCard otherwise we toast the user
-        if(contact!=null){
+        if(contact!=null) {
             VCard vcard = contact.generateVcard();
             //write vCard
-            File file = new File(contact.getLastname()+contact.getFirstname()+".vcf");
+            File file = new File(contact.getLastname() + contact.getFirstname() + ".vcf");
             Ezvcard.write(vcard).version(VCardVersion.V3_0).go(file);
+
+            // Setting progress indicator to 100%
             indicator.setProgress(1F);
+
+            // Opens Finder / Explorer when export is finished
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(new File("./"));
+            }
         }
         else{
             Toast.makeText(App.stage,"Export error" ,"Contact not created yet !", 1500, 500, 500);
@@ -138,6 +148,8 @@ public class AddContactController {
             ContactService.removeContact(contact);
             ContactManagerController.goTo();
         }
+
+        Toast.makeText(App.stage,"Deletion success" ,"Contact successfully deleted !", 1500, 500, 500);
 
     }
 

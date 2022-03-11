@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:ez-vcard 0.11.3
+N:TestLastName;TestFirstName
+NICKNAME:BetaTester
+BDAY:2000-04-14
+ADR:;;3 Rue du pont
+EMAIL:test.testing@student.junia.com
+TEL:0610161815
+END:VCARD
