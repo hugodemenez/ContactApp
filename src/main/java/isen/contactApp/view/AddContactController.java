@@ -65,11 +65,17 @@ public class AddContactController {
         gender.getSelectionModel()
                 .selectedItemProperty()
                 //.addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> System.out.println("/isen/contactApp/view/user_"+newValue.toLowerCase(Locale.ROOT)+".png"));
-                .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> avatar.setImage(new Image("/isen/contactApp/view/user_"+newValue.toLowerCase(Locale.ROOT)+".png")));
+                .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+                    if (newValue!=null){
+                    avatar.setImage(new Image("/isen/contactApp/images/user_"+newValue.toLowerCase(Locale.ROOT)+".png"));
+                    }
+
+                });
 
 
     }
 
+    // Method to fill all the known information from contact
     @FXML
     public void initializeContactData(Contact contact){
         this.contact = contact;
@@ -82,6 +88,7 @@ public class AddContactController {
         nickName.setText(contact.getNickname());
         addButton.setText("Update");
         gender.setValue(contact.getGender());
+
     }
 
 
@@ -102,15 +109,15 @@ public class AddContactController {
 
     // Function to call when clicking on delete button
     public void handleClickDelete(){
+        lastName.requestFocus();
         lastName.clear();
         firstName.clear();
         emailAddress.clear();
         phoneNumber.clear();
-        birthDate.requestFocus();
+        birthDate.setValue(null);
         address.clear();
         nickName.clear();
         addButton.setText("Add");
-        gender.hide();
 
 
         // Remove contact from the db if we have selected a contact
@@ -134,15 +141,22 @@ public class AddContactController {
     // Function to call when clicking on add button
     public void handleClickAddContact(){
 
+        // If contact not null we are deleting the existing contact
+        if(contact!=null){
+            // First remove contact
+            ContactService.removeContact(contact);
+            // Then do the same as adding a new contact
+        }
 
-        // Collecting fields to instantiate contact Class to pass into addContactToDb from ContactsDAOs class
-        java.util.Date date = Date.from(birthDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-                // Add contact to database through the DAO
 
+        // Collecting fields to instantiate contact Class to pass into addContact from ContactService class
 
         // Add contact with the service (database + contact instance) with the fully loaded contact (generated id + contact data)
         ContactService.addContact(new Contact(lastName.getText(), firstName.getText(), nickName.getText(), phoneNumber.getText(),
-                address.getText(), emailAddress.getText(), new java.sql.Date(date.getTime()), gender.getValue()));
+                address.getText(), emailAddress.getText(), new java.sql.Date(Date.from(birthDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()), gender.getValue()));
+
+
+
 
         // Change view
         goToContactManager();

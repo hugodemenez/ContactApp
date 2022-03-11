@@ -21,7 +21,7 @@ public class ContactsDAOs {
 	
 	public static Contact addContactToDb(Contact contact) {
 		try (Connection connection = getDataSource().getConnection()) {
-	        String sqlQuery = "INSERT INTO person(lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES(?,?,?,?,?,?,?)";
+	        String sqlQuery = "INSERT INTO person(lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) VALUES(?,?,?,?,?,?,?,?)";
 	        try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
 	            statement.setString(1, contact.getLastname());
 	            statement.setString(2, contact.getFirstname());
@@ -30,6 +30,7 @@ public class ContactsDAOs {
 	            statement.setString(5, contact.getAddress());
 	            statement.setString(6, contact.getEmail_address());
 	            statement.setDate(7, contact.getBirth_date());
+				statement.setString(8, contact.getGender());
 	            statement.executeUpdate();
 	            contact.setIdPerson(statement.getGeneratedKeys().getInt(1));
 	        }
@@ -58,7 +59,6 @@ public class ContactsDAOs {
 								results.getString("email_address"),
 								results.getDate("birth_date"),
 								results.getString("gender")));
-
 					}
 				}
 			}
