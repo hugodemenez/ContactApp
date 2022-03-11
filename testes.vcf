@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:ez-vcard 0.11.3
+N:tes;tes
+NICKNAME:test
+BDAY:2000-05-22
+ADR:;;2 Rue verte
+EMAIL:test@lacatholille.fr
+TEL:0111151115151
+END:VCARD

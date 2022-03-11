@@ -4,10 +4,7 @@
 package isen.contactApp.entities;
 
 import ezvcard.VCard;
-import ezvcard.property.Address;
-import ezvcard.property.Gender;
-import ezvcard.property.StructuredName;
-import ezvcard.property.Telephone;
+import ezvcard.property.*;
 
 import java.sql.Date; //Format AAAA-MM-JJ
 import java.time.LocalDate;
@@ -85,6 +82,9 @@ public class Contact {
 
 		// Adding nickname to vcard
 		vcard.setNickname(nickname);
+
+		// Setting birthdate
+		vcard.setBirthday(new Birthday(birth_date));
 
 		// Setting up right format  for address
 		Address addressVCard = new Address();

@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ContactsDAOTestCase {
 
-        private final ContactsDAOs contactDao = new ContactsDAOs();
 
         @Before
         public void initDb() throws Exception {
@@ -28,7 +27,8 @@ public class ContactsDAOTestCase {
                             "    phone_number VARCHAR(15) NULL,\n" +
                             "    address VARCHAR(200) NULL,\n" +
                             "    email_address VARCHAR(150) NULL,\n" +
-                            "    birth_date DATE NULL);");
+                            "    birth_date DATE NULL,\n" +
+                            "    gender VARCHAR(150) NULL");
             stmt.close();
             connection.close();
         }
@@ -46,7 +46,8 @@ public class ContactsDAOTestCase {
                 "hugo.demenez@student.junia.com",
                 Date.valueOf("2022-03-09"),
                 "Men");
-        contactDao.addContactToDb(contact);
+
+        ContactsDAOs.addContactToDb(contact);
         // THEN
         Connection connection = DataSourceFactory.getDataSource().getConnection();
         Statement statement = connection.createStatement();

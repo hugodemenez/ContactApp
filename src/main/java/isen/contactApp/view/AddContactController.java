@@ -8,6 +8,7 @@ import isen.contactApp.App;
 import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
 import isen.contactApp.service.ContactService;
+import isen.contactApp.util.Toast;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -57,7 +58,14 @@ public class AddContactController {
     private Contact contact;
 
     @FXML
+    private ProgressIndicator indicator;
+
+    @FXML
+    private Button exportButton;
+
+    @FXML
     public void initialize(){
+
         gender.getItems().add("Man");
         gender.getItems().add("Woman");
         gender.getItems().add("Unset");
@@ -95,11 +103,22 @@ public class AddContactController {
 
     // Function to call when clicking on export button
     public void handleClickExportVCard() throws IOException {
-        VCard vcard = contact.generateVcard();
-        //write vCard
-        File file = new File(contact.getLastname()+contact.getFirstname()+".vcf");
-        System.out.println("Writing " + file.getName() + "...");
-        Ezvcard.write(vcard).version(VCardVersion.V3_0).go(file);
+
+        // If the contact is created we are able to create its vCard otherwise we toast the user
+        if(contact!=null){
+            VCard vcard = contact.generateVcard();
+            //write vCard
+            File file = new File(contact.getLastname()+contact.getFirstname()+".vcf");
+            Ezvcard.write(vcard).version(VCardVersion.V3_0).go(file);
+            indicator.setProgress(1F);
+        }
+        else{
+            String toastMsg = "Contact not created yet !";
+            int toastMsgTime = 1500; //1.5 seconds
+            int fadeInTime = 500; //0.5 seconds
+            int fadeOutTime= 500; //0.5 seconds
+            Toast.makeText(App.stage, toastMsg, toastMsgTime, fadeInTime, fadeOutTime);
+        }
     }
 
     // Function to call when clicking on delete button
