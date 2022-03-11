@@ -26,12 +26,21 @@ public class App extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		App.stage = stage;
+
+
+		// Loading custom fonts
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-Regular.otf"), 10);
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-ExtraBold.otf"), 10);
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-Bold.otf"), 10);
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-SemiBold.otf"), 10);
+
+		// Setting up app icon
 		stage.getIcons().add(new Image("isen/contactApp/images/group_add.png"));
+
+		// Setting up app title
 		stage.setTitle("The Best Contact App");
+
+
 		// Load the main layout from file
 		mainLayout = loadFXML("HeaderBar");
 
