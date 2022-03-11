@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
@@ -118,19 +119,27 @@ public class ContactManagerController {
     public void handleClickExportContacts(){
         List<VCard> vcards = new ArrayList<VCard>();
 
+        if(contactsTable.getItems().isEmpty()){
+            Toast.makeText(App.stage,"Export Error","There is not contact to export !",1500,500,500);
+        }
+
         for(Contact contact : contactsTable.getItems()){
             VCard vcard = contact.generateVcard();
             vcards.add(vcard);
         }
 
 
+
         File file = new File("contacts.vcf");
         try {
             Ezvcard.write(vcards).prodId(false).go(file);
             indicator.setProgress(1F);
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(new File("./"));
+            }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(App.stage,"Export Error","Unable to export contact",1500,500,500);
         }
     }
 

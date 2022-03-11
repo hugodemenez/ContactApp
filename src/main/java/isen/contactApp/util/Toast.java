@@ -34,6 +34,7 @@ public final class Toast
 
         Button deleteButton = new Button();
         deleteButton.setText("X");
+        deleteButton.setFont(Font.font("Hellix", 16));
         deleteButton.setStyle("""
                 -fx-background-radius: 5;
                 -fx-background-color: rgba(0,0,0,0);
