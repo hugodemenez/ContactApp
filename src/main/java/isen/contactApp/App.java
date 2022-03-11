@@ -29,6 +29,7 @@ public class App extends Application {
 		// Init the app stage
 		App.stage = stage;
 
+		stage.setResizable(false);
 
 		// Loading custom fonts accessed with the css but not fully working (didn't figure out why)
 		Font.loadFont(getClass().getResourceAsStream("isen/contactApp/view/fonts/Hellix-Regular.otf"), 10);

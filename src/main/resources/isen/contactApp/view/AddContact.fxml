@@ -15,7 +15,7 @@
    <children>
       <AnchorPane layoutX="10.0" layoutY="47.0" prefHeight="532.0" prefWidth="1179.0">
          <children>
-            <Button fx:id="addButton" layoutX="1059.0" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#handleClickAddContact" prefHeight="33.0" styleClass="add-button" text="Add">
+            <Button fx:id="addButton" layoutX="1010.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#handleClickAddContact" prefHeight="33.0" styleClass="add-button" text="Add">
                <graphic>
                   <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
             <Label layoutX="836.0" layoutY="271.0" text="Address" />
             <Label layoutX="513.0" layoutY="335.0" text="Gender" />
             <ChoiceBox fx:id="gender" layoutX="510.0" layoutY="355.0" prefHeight="25.0" prefWidth="241.0" />
-            <Button fx:id="exportButton" layoutX="910.0" mnemonicParsing="false" onAction="#handleClickExportVCard" styleClass="export-button" text="Export">
+            <Button fx:id="exportButton" layoutX="861.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleClickExportVCard" styleClass="export-button" text="Export">
                <graphic>
                   <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   <Font size="7.0" />
                </font>
             </Button>
-            <Button layoutX="1037.0" mnemonicParsing="false" onAction="#handleClickDelete" styleClass="delete-button" text="Delete">
+            <Button layoutX="988.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleClickDelete" styleClass="delete-button" text="Delete">
                <graphic>
                   <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -83,7 +83,7 @@
                   <Font size="7.0" />
                </font>
             </Button>
-            <ProgressIndicator fx:id="indicator" layoutX="862.0" layoutY="-1.0" progress="0.0" />
+            <ProgressIndicator fx:id="indicator" layoutX="813.0" progress="0.0" />
          </children>
       </AnchorPane>
    </children>

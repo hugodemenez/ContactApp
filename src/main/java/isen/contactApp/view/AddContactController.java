@@ -113,11 +113,7 @@ public class AddContactController {
             indicator.setProgress(1F);
         }
         else{
-            String toastMsg = "Contact not created yet !";
-            int toastMsgTime = 1500; //1.5 seconds
-            int fadeInTime = 500; //0.5 seconds
-            int fadeOutTime= 500; //0.5 seconds
-            Toast.makeText(App.stage, toastMsg, toastMsgTime, fadeInTime, fadeOutTime);
+            Toast.makeText(App.stage,"Export error" ,"Contact not created yet !", 1500, 500, 500);
         }
     }
 
