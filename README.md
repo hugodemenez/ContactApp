@@ -23,6 +23,7 @@
   - [Delete a person](#delete-a-person)
   - [Export functionality that takes all the data in the database and store it in a vCard](#export-functionality-that-takes-all-the-data-in-the-database-and-store-it-in-a-vcard)
   - [Dynamic profile picture depending on gender](#dynamic-profile-picture-depending-on-gender)
+- [Demo App](#demo-app)
 
 ***
 
@@ -71,3 +72,7 @@ When we select an element of the TableView we arrive on the editing view, we are
 ## Dynamic profile picture depending on gender
 
 
+# Demo App 
+<a href = "/assets/DemoApp.gif">
+  <img src ="/assets/DemoApp.gif"/>
+</a>
