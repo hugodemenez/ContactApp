@@ -76,8 +76,8 @@ When we select an element of the TableView we arrive on the editing view, we are
 
 
 # Demo App 
-<a href = "/assets/DemoApp.gif">
-  <img src ="/assets/DemoApp.gif"/>
+<a href = "/assets/Demo.gif">
+  <img src ="/assets/Demo.gif"/>
 </a>
 
 # Encountered issues
