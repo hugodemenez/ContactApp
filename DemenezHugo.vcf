@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:ez-vcard 0.11.3
+N:Demenez;Hugo
+NICKNAME:hdemenez
+BDAY:2000-03-18
+ADR:;;27 rue jean jaures
+EMAIL:hugo.demenez@student.junia.com
+TEL:0699101967
+END:VCARD
