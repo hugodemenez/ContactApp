@@ -81,7 +81,7 @@ We simply brought the dependency through the maven pom file.
 ## Dynamic profile picture depending on gender
 The image picture inside the contact description is linked to the gender.
 
-In face we had another thing in minde : [Lists of contacts](#lists-of-contacts)
+In face we had another thing in minde : [Custom pictures](#custom-pictures)
 
 
 # Demo App 
