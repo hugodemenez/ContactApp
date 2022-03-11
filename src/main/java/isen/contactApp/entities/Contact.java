@@ -23,7 +23,6 @@ public class Contact {
 	private String address;
 	private String email_address;
 	private Date birth_date;
-	private String avatarName;
 	private String gender;
 
 	// Default constructor

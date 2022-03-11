@@ -1,8 +1,8 @@
 
-<h1 style='font-weight:bold;font-size:46px;'>Contact app developped in Java by :</h1>
+<h1 style='font-weight:bold;font-size:46px;'>Contact app developed in Java by :</h1>
 
 <a href = "https://github.com/hugodemenez/ContactApp/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=hugodemenez/ContactApp"/>
+  <img src = "https://contrib.rocks/image?repo=hugodemenez/ContactApp" alt="contributors : Hugo DEMENEZ, Alban DUHAMEL, Quentin DUMESGE"/>
 </a>
 
 <br>
@@ -45,7 +45,7 @@ Then we used Figma, which is a user interface design software.
 We designed the interface and found out where to put elements.
 
 <a href = "/assets/figmaDesign.png">
-  <img src ="/assets/figmaDesign.png"/>
+  <img src ="/assets/figmaDesign.png"  alt="Figma Interface Design"/>
 </a>
 
 
@@ -87,7 +87,7 @@ In face we had another thing in minde : [Custom pictures](#custom-pictures)
 
 # Demo App 
 <a href = "/assets/Demo.gif">
-  <img src ="/assets/Demo.gif"/>
+  <img src ="/assets/Demo.gif" alt="Demo Gif"/>
 </a>
 
 # Encountered issues

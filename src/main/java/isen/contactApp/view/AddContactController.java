@@ -3,13 +3,10 @@ package isen.contactApp.view;
 import ezvcard.Ezvcard;
 import ezvcard.VCard;
 import ezvcard.VCardVersion;
-import ezvcard.property.StructuredName;
 import isen.contactApp.App;
-import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.Toast;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,8 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -64,9 +59,6 @@ public class AddContactController {
     private ProgressIndicator indicator;
 
     @FXML
-    private Button exportButton;
-
-    @FXML
     public void initialize(){
 
         gender.getItems().add("Man");
@@ -81,10 +73,7 @@ public class AddContactController {
                     if (newValue!=null){
                     avatar.setImage(new Image("/isen/contactApp/images/user_"+newValue.toLowerCase(Locale.ROOT)+".png"));
                     }
-
                 });
-
-
     }
 
     // Method to fill all the known information from contact
@@ -177,15 +166,11 @@ public class AddContactController {
             // Then do the same as adding a new contact
         }
 
-
         // Collecting fields to instantiate contact Class to pass into addContact from ContactService class
 
         // Add contact with the service (database + contact instance) with the fully loaded contact (generated id + contact data)
         ContactService.addContact(new Contact(lastName.getText(), firstName.getText(), nickName.getText(), phoneNumber.getText(),
                 address.getText(), emailAddress.getText(), new java.sql.Date(Date.from(birthDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()), gender.getValue()));
-
-
-
 
         // Change view
         goToContactManager();
@@ -195,7 +180,5 @@ public class AddContactController {
     public void goToContactManager() {
         ContactManagerController.goTo();
     }
-
-
 
 }
