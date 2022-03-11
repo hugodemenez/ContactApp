@@ -17,7 +17,12 @@
   - [Figma Design](#figma-design)
   - [Setting up the GitHub](#setting-up-the-github)
 - [Functionalities](#functionalities)
-  - [How to add](#how-to-add)
+  - [List all persons in the database](#list-all-persons-in-the-database)
+  - [Add a new person with a form](#add-a-new-person-with-a-form)
+  - [Update the data of existing persons](#update-the-data-of-existing-persons)
+  - [Delete a person](#delete-a-person)
+  - [Export functionality that takes all the data in the database and store it in a vCard](#export-functionality-that-takes-all-the-data-in-the-database-and-store-it-in-a-vcard)
+  - [Dynamic profile picture depending on gender](#dynamic-profile-picture-depending-on-gender)
 
 ***
 
@@ -50,4 +55,19 @@ It helped us to debug our own code, without dealing with other branches errors.
 
 
 # Functionalities
-## How to add
+## List all persons in the database
+The main page reads all persons in the database and fills a TableView with the necessary information
+
+
+## Add a new person with a form
+We can create a new person in the database through a form. We have to fill every field in order to create a proper Contact instance.
+
+## Update the data of existing persons
+We can select an element of the TableView and update its content.
+
+## Delete a person
+When we select an element of the TableView we arrive on the editing view, we are able to delete the person through this view
+## Export functionality that takes all the data in the database and store it in a vCard
+## Dynamic profile picture depending on gender
+
+
