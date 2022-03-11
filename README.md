@@ -27,6 +27,7 @@
 - [Encountered issues](#encountered-issues)
   - [Check boxes](#check-boxes)
   - [Lists of contacts](#lists-of-contacts)
+  - [Custom pictures](#custom-pictures)
 
 ***
 
@@ -72,7 +73,15 @@ We can select an element of the TableView and update its content.
 ## Delete a person
 When we select an element of the TableView we arrive on the editing view, we are able to delete the person through this view
 ## Export functionality that takes all the data in the database and store it in a vCard
+To achieve this we used the following library : https://github.com/mangstadt/ez-vcard
+Don't hesitate to give a star to the project, since it helped us a lot to export our data into vCard files.
+
+We simply brought the dependency through the maven pom file.
+
 ## Dynamic profile picture depending on gender
+The image picture inside the contact description is linked to the gender.
+
+In face we had another thing in minde : [Lists of contacts](#lists-of-contacts)
 
 
 # Demo App 
@@ -85,9 +94,14 @@ When we select an element of the TableView we arrive on the editing view, we are
 ## Check boxes
 
 We wanted to be able to select multiple persons to delete them at one time. 
-Unfortunately, it didn't work because we already had the event listner on the click on a row of the table view.
+Unfortunately, it didn't work because we already had the event listener on the click on a row of the table view.
 
 ## Lists of contacts
 
 We had in mind lists of contacts like favorites, friends, family, work and so on...
 But since everything has to be listed inside a database, we didn't manage to figure out how to deal with multiple lists.
+
+## Custom pictures
+
+We wanted to link a custom picture to the contact, however since we didn't manage to access files outside the project, like /Users/
+we didn't want to create issues. We also tried to use images from the web but it was in BufferImage format and we didn't manage to cast them into javafx.Image class.
