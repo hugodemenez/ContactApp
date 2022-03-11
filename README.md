@@ -24,6 +24,9 @@
   - [Export functionality that takes all the data in the database and store it in a vCard](#export-functionality-that-takes-all-the-data-in-the-database-and-store-it-in-a-vcard)
   - [Dynamic profile picture depending on gender](#dynamic-profile-picture-depending-on-gender)
 - [Demo App](#demo-app)
+- [Encountered issues](#encountered-issues)
+  - [Check boxes](#check-boxes)
+  - [Lists of contacts](#lists-of-contacts)
 
 ***
 
@@ -76,3 +79,15 @@ When we select an element of the TableView we arrive on the editing view, we are
 <a href = "/assets/DemoApp.gif">
   <img src ="/assets/DemoApp.gif"/>
 </a>
+
+# Encountered issues
+
+## Check boxes
+
+We wanted to be able to select multiple persons to delete them at one time. 
+Unfortunately, it didn't work because we already had the event listner on the click on a row of the table view.
+
+## Lists of contacts
+
+We had in mind lists of contacts like favorites, friends, family, work and so on...
+But since everything has to be listed inside a database, we didn't manage to figure out how to deal with multiple lists.
