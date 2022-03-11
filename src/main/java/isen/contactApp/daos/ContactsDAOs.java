@@ -54,7 +54,8 @@ public class ContactsDAOs {
 								results.getString("phone_number"),
 								results.getString("address"),
 								results.getString("email_address"),
-								results.getDate("birth_date")));
+								results.getDate("birth_date"),
+								results.getString("gender")));
 
 					}
 				}

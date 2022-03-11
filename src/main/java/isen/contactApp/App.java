@@ -60,13 +60,8 @@ public class App extends Application {
 		return scene;
 	}
 
-
 	public static BorderPane getMainLayout() {
 		return mainLayout;
-	}
-
-	public static void setMainLayout(BorderPane mainLayout) {
-		App.mainLayout = mainLayout;
 	}
 
 	public static void main(String[] args) {

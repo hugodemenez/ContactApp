@@ -28,7 +28,7 @@
             </Button>
             <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" layoutX="203.0" layoutY="117.0" onMouseClicked="#handleClickChangeImage" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/user_male.png" />
+                  <Image url="@../images/user_man.png" />
                </image>
             </ImageView>
             <TextField fx:id="nickName" alignment="CENTER" layoutX="203.0" layoutY="277.0" prefHeight="34.0" prefWidth="143.0" promptText="Nickname" />
