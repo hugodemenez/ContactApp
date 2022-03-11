@@ -52,9 +52,9 @@ We designed the interface and found out where to put elements.
 ## Setting up the GitHub
 
 Then we started the work.
-We created a github repository and used sample project we had in our practical work during the Java Course.
+We created a github repository and used sample project we had done during our practical work in the Java Course.
 
-We had to set up multiple branches to work together at the same time on differents functionnalities.
+We had to set up multiple branches to work together at the same time on different functionnalities.
 
 It helped us to debug our own code, without dealing with other branches errors.
 
@@ -72,6 +72,7 @@ We can select an element of the TableView and update its content.
 
 ## Delete a person
 When we select an element of the TableView we arrive on the editing view, we are able to delete the person through this view
+
 ## Export functionality that takes all the data in the database and store it in a vCard
 To achieve this we used the following library : https://github.com/mangstadt/ez-vcard
 Don't hesitate to give a star to the project, since it helped us a lot to export our data into vCard files.
