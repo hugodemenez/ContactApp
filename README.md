@@ -11,11 +11,17 @@
 
 <h1>Table of content </h1>
 
+- [](#)
 - [Functionalities](#functionalities)
   - [How to add](#how-to-add)
 
 
 ***
+
+# How we started
+<a href = "/assets/figmaDesign.png">
+  <img src ="/assets/figmaDesign.png"/>
+</a>
 
 
 # Functionalities
