@@ -56,7 +56,7 @@ public class AddContactController {
         address.setText(contact.getAddress());
         nickName.setText(contact.getNickname());
         addButton.setText("Update");
-        avatar.setImage(new Image("/isen/contactApp/images/"+contact.getAvatarName()+".png"));
+        avatar.setImage(new Image(""));
     }
 
     public void handleClickChangeImage(){
