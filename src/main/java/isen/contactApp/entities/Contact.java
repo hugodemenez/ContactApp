@@ -64,6 +64,8 @@ public class Contact {
 
 
 
+
+
 	//Getter and Setter
 	public String getGender(){
 		return gender;
@@ -71,6 +73,10 @@ public class Contact {
 
 	public int getIdperson() {
 		return idPerson;
+	}
+
+	public void setIdPerson(int idPerson) {
+		this.idPerson = idPerson;
 	}
 
 	public String getLastname() {

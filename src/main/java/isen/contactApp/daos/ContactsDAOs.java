@@ -19,7 +19,7 @@ import static isen.contactApp.daos.DataSourceFactory.getDataSource;
 public class ContactsDAOs {
 
 	
-	public void addContactToDb(Contact contact) {
+	public static Contact addContactToDb(Contact contact) {
 		try (Connection connection = getDataSource().getConnection()) {
 	        String sqlQuery = "INSERT INTO person(lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES(?,?,?,?,?,?,?)";
 	        try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
@@ -31,15 +31,17 @@ public class ContactsDAOs {
 	            statement.setString(6, contact.getEmail_address());
 	            statement.setDate(7, contact.getBirth_date());
 	            statement.executeUpdate();
-	            statement.getGeneratedKeys();
+	            contact.setIdPerson(statement.getGeneratedKeys().getInt(1));
 	        }
 	    } 
 		catch (SQLException e) {
 	        e.printStackTrace();
 	    }
+
+		return contact;
 	}
 
-	public List<Contact> getContactsFromDb() {
+	public static List<Contact> getContactsFromDb() {
 		List<Contact> listOfContacts = new ArrayList<>();
 
 		try(Connection connection = getDataSource().getConnection()){
@@ -65,6 +67,47 @@ public class ContactsDAOs {
 		}
 
 		return listOfContacts;
+
+	}
+
+	public static int getContactIdFromDb(Contact contact) {
+
+
+		try(Connection connection = getDataSource().getConnection()){
+			try(Statement statement = connection.createStatement()){
+				try(ResultSet results = statement.executeQuery("SELECT * FROM person")){
+					while(results.next()){
+						if (results.getString("lastname").equals(contact.getLastname()) && results.getString("firstname").equals(contact.getFirstname())){
+							return results.getInt("idperson");
+						}
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		throw new RuntimeException("Unable to find id of the selected contact");
+
+	}
+
+	public static void removeContactFromDb(Contact contact){
+		try {
+			Connection connection = DataSourceFactory.getDataSource().getConnection();
+			Statement stmt = connection.createStatement();
+
+
+			stmt.executeUpdate("DELETE FROM person WHERE idperson = "+contact.getIdperson()+";");
+			stmt.close();
+			connection.close();
+			System.out.println(contact.getLastname()+contact.getFirstname()+" sucessfully removed from db");
+		}
+		catch(Exception exception){
+			System.out.println(exception.getMessage());
+		}
+
+
+
 
 	}
 	

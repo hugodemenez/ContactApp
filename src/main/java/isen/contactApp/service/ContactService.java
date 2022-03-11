@@ -10,11 +10,11 @@ import javafx.collections.ObservableList;
 
 public class ContactService {
 
-	private ObservableList<Contact> contacts;
+	private final ObservableList<Contact> contacts;
 
 	private ContactService() {
 		contacts = FXCollections.observableArrayList();
-		List<Contact> listOfContacts = new ContactsDAOs().getContactsFromDb();
+		List<Contact> listOfContacts = ContactsDAOs.getContactsFromDb();
 		contacts.addAll(listOfContacts);
 
 		/*
@@ -28,8 +28,20 @@ public class ContactService {
 		return QuestionServiceHolder.INSTANCE.contacts;
 	}
 
-	public static void addContact(Contact question) {
-		QuestionServiceHolder.INSTANCE.contacts.add(question);
+
+	// Method to add contact to the database and to the contacts instance
+	public static void addContact(Contact contact) {
+		// Add contact to the database and collect the generated id to add the fully loaded contact to the contact list
+		QuestionServiceHolder.INSTANCE.contacts.add(ContactsDAOs.addContactToDb(contact));
+	}
+
+	// Method to remove contact from the database and from the instance
+	public static void removeContact(Contact contact) {
+		// Remove contact from the contacts instance
+		QuestionServiceHolder.INSTANCE.contacts.remove(contact);
+
+		// Remove contact from the database
+		ContactsDAOs.removeContactFromDb(contact);
 	}
 
 	private static class QuestionServiceHolder {

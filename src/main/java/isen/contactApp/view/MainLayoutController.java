@@ -10,7 +10,7 @@ public class MainLayoutController {
 	}
 
 	public void gotoHome() {
-		App.showView("ContactManager");
+		ContactManagerController.goTo();
 	}
 
 

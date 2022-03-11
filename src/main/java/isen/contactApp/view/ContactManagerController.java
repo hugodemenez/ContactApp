@@ -5,17 +5,11 @@ import isen.contactApp.entities.Contact;
 import isen.contactApp.entities.ListContacts;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.*;
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.CheckBoxTableCell;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
+
 
 
 import java.sql.Date;
@@ -103,15 +97,16 @@ public class ContactManagerController {
 
     }
 
-
-    @FXML
-    public void resetView(){
-        refreshList();
-    }
-
     @FXML
     public void handleClickAddContact() {
         App.showView("AddContact");
     }
+
+
+
+    public static void goTo(){
+        App.showView("ContactManager");
+    }
+
 
 }

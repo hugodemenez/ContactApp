@@ -44,7 +44,8 @@ public class ContactsDAOTestCase {
                 "0600000000",
                 "5 rue de l'avenue",
                 "hugo.demenez@student.junia.com",
-                Date.valueOf("2022-03-09"));
+                Date.valueOf("2022-03-09"),
+                "Men");
         contactDao.addContactToDb(contact);
         // THEN
         Connection connection = DataSourceFactory.getDataSource().getConnection();

@@ -7,6 +7,7 @@ import ezvcard.property.StructuredName;
 import isen.contactApp.App;
 import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
+import isen.contactApp.service.ContactService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -49,17 +50,19 @@ public class AddContactController {
     @FXML
     private ImageView avatar;
 
-
+    private Contact contact;
 
     @FXML
     public void initialize(){
         gender.getItems().add("Man");
         gender.getItems().add("Woman");
         gender.getItems().add("Unset");
+        gender.setValue("Man");
     }
 
     @FXML
     public void initializeContactData(Contact contact){
+        this.contact = contact;
         lastName.setText(contact.getLastname());
         firstName.setText(contact.getFirstname());
         emailAddress.setText(contact.getEmail_address());
@@ -68,7 +71,6 @@ public class AddContactController {
         address.setText(contact.getAddress());
         nickName.setText(contact.getNickname());
         addButton.setText("Update");
-        avatar.setImage(new Image("/isen/contactApp/images/"+contact.getAvatarName()+".png"));
         gender.setValue(contact.getGender());
     }
 
@@ -83,9 +85,30 @@ public class AddContactController {
         n.getPrefixes().add(gender.getValue());
         vcard.setStructuredName(n);
 
-        vcard.setFormattedName("John Doe");
+        vcard.setFormattedName(lastName.getText()+firstName.getText());
 
         String str = Ezvcard.write(vcard).version(VCardVersion.V4_0).go();
+    }
+
+    // Function to call when clicking on delete button
+    public void handleClickDelete(){
+        lastName.clear();
+        firstName.clear();
+        emailAddress.clear();
+        phoneNumber.clear();
+        birthDate.requestFocus();
+        address.clear();
+        nickName.clear();
+        addButton.setText("Add");
+        gender.hide();
+
+
+        // Remove contact from the db if we have selected a contact
+        if (contact !=null) {
+            ContactService.removeContact(contact);
+            ContactManagerController.goTo();
+        }
+
     }
 
 
@@ -100,19 +123,24 @@ public class AddContactController {
 
     // Function to call when clicking on add button
     public void handleClickAddContact(){
+
+
         // Collecting fields to instantiate contact Class to pass into addContactToDb from ContactsDAOs class
         java.util.Date date = Date.from(birthDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                 // Add contact to database through the DAO
-        new ContactsDAOs().addContactToDb(new Contact(lastName.getText(), firstName.getText(), nickName.getText(), phoneNumber.getText(),
+
+
+        // Add contact with the service (database + contact instance) with the fully loaded contact (generated id + contact data)
+        ContactService.addContact(new Contact(lastName.getText(), firstName.getText(), nickName.getText(), phoneNumber.getText(),
                 address.getText(), emailAddress.getText(), new java.sql.Date(date.getTime()), gender.getValue()));
 
-        gotoHome();
+        // Change view
+        goToContactManager();
     }
 
 
-
-    public void gotoHome() {
-        App.showView("ContactManager");
+    public void goToContactManager() {
+        ContactManagerController.goTo();
     }
 
 
