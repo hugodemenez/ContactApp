@@ -78,10 +78,6 @@ public class ContactManagerController {
     }
 
 
-
-
-
-
     // Populate list with contacts inside the database
     @FXML
     public void populateContactTable(){
@@ -129,31 +125,37 @@ public class ContactManagerController {
             }
         });
         
+        //Initial filtered list
         FilteredList<Contact> filteredData =new FilteredList<>(contactSearchModelObservableList,b -> true);
 	    keywordTextField.textProperty().addListener((observable,oldValue,newValue)->{
 	    	filteredData.setPredicate(contact -> {
+	    		
+	    		//If no search value is entered then it displays everything
 	    		if(newValue.isEmpty() || newValue.isBlank() || newValue==null) {
 	    			return true;
 	    		}
+	    		
 	    		String searchKeyword = newValue.toLowerCase();
 	    		if(contact.getLastname().toLowerCase().indexOf(searchKeyword)>-1) {
-	    			return true;
+	    			return true; //Found a match in Lastname
 	    		} else if(contact.getFirstname().toLowerCase().indexOf(searchKeyword)>-1) {
-	    			return true;
+	    			return true; //Found a match in Firstname
 	    		}else if(contact.getNickname().toLowerCase().indexOf(searchKeyword)>-1) {
-	    			return true;
+	    			return true; //Found a match in Nickname
 	    		}else if(contact.getPhone_number().toLowerCase().indexOf(searchKeyword)>-1) {
-	    			return true;
+	    			return true; //Found a match in PhoneNumber
 	    		}else {
-	    			return false;
+	    			return false; //no match found
 	    		}
 	    	});
 	    });
 	    
 	    SortedList<Contact> sortedData = new SortedList<>(filteredData);
+	    //Bind the sorted result with the Table View
 	    sortedData.comparatorProperty().bind(contactsTable.comparatorProperty());
+	    //Apply filtered and sorted data to the Table View
 	    contactsTable.setItems(sortedData);
-
+	    populateContactTable();
     }
 
 
