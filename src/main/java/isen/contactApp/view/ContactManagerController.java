@@ -7,11 +7,15 @@ import isen.contactApp.entities.Contact;
 import isen.contactApp.entities.ListContacts;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 
 import java.awt.*;
@@ -57,8 +61,11 @@ public class ContactManagerController {
 
     @FXML
     private ProgressIndicator indicator;
+    
+    @FXML
+    private TextField keywordTextField;
 
-
+    ObservableList<Contact> contactSearchModelObservableList =FXCollections.observableArrayList();
 
 
     // Refresh the table with contacts and clear selection
@@ -121,6 +128,31 @@ public class ContactManagerController {
                 }
             }
         });
+        
+        FilteredList<Contact> filteredData =new FilteredList<>(contactSearchModelObservableList,b -> true);
+	    keywordTextField.textProperty().addListener((observable,oldValue,newValue)->{
+	    	filteredData.setPredicate(contact -> {
+	    		if(newValue.isEmpty() || newValue.isBlank() || newValue==null) {
+	    			return true;
+	    		}
+	    		String searchKeyword = newValue.toLowerCase();
+	    		if(contact.getLastname().toLowerCase().indexOf(searchKeyword)>-1) {
+	    			return true;
+	    		} else if(contact.getFirstname().toLowerCase().indexOf(searchKeyword)>-1) {
+	    			return true;
+	    		}else if(contact.getNickname().toLowerCase().indexOf(searchKeyword)>-1) {
+	    			return true;
+	    		}else if(contact.getPhone_number().toLowerCase().indexOf(searchKeyword)>-1) {
+	    			return true;
+	    		}else {
+	    			return false;
+	    		}
+	    	});
+	    });
+	    
+	    SortedList<Contact> sortedData = new SortedList<>(filteredData);
+	    sortedData.comparatorProperty().bind(contactsTable.comparatorProperty());
+	    contactsTable.setItems(sortedData);
 
     }
 
@@ -131,8 +163,7 @@ public class ContactManagerController {
         App.showView("AddContact");
     }
 
-
-
+ 
     // Method to export all contacts inside the contact table in a VCard formatted file and opens up the file explorer to locate the file
     @FXML
     public void handleClickExportContacts(){
