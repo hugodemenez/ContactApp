@@ -8,12 +8,12 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 public class ContactsDAOTestCase {
-
-	ContactsDAOs contactDAO = new ContactsDAOs(); 
 
     @Before
     public void initDb() throws Exception {
@@ -32,14 +32,14 @@ public class ContactsDAOTestCase {
                         "    gender VARCHAR(150) NULL);");
         stmt.executeUpdate("DELETE FROM person");
         
-        stmt.executeUpdate("INSERT INTO genre(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
-        				 + "VALUES (0,'Demenez','Hugo','hdemenez','069910196727','rue jean jaures','hugo.demenez@student.junia.com','2000-03-18','Man')");
+        stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
+        				 + "VALUES (0,'Demenez','Hugo','hdemenez','069910196727','rue jean jaures','hugo.demenez@student.junia.com','2000-03-18 00:00:00.000','Man')");
         
-        stmt.executeUpdate("INSERT INTO genre(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
-        				 + "VALUES (1,'Duhamel','Alban','aduhamel',06111111111,'avenue du soleil','alban.duhamel@student.junia.com','2000-09-14','Man')");
+        stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
+        				 + "VALUES (1,'Duhamel','Alban','aduhamel','06111111111','avenue du soleil','alban.duhamel@student.junia.com','2000-09-14 00:00:00.000','Man')");
         
-        stmt.executeUpdate("INSERT INTO genre(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
-        				 + "VALUES (2,'Dumesge','Quentin','qdumesge',03222222228,'rue de la lune','quentin.dumesge@student.junia.com','2000-10-14','Man')");
+        stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
+        				 + "VALUES (2,'Dumesge','Quentin','qdumesge','03222222228','rue de la lune','quentin.dumesge@student.junia.com','2000-10-14 00:00:00.000','Man')");
         
         stmt.close();
         connection.close();
@@ -49,7 +49,6 @@ public class ContactsDAOTestCase {
     public void shouldAddContact() throws Exception {
         // WHEN
         Contact contact = new Contact(
-                3,
                 "DUVAL",
                 "Philippe",
                 "P.DUVAL",
@@ -59,13 +58,13 @@ public class ContactsDAOTestCase {
                 Date.valueOf("2022-03-09"),
                 "Man");
 
-        contactDAO.addContactToDb(contact);
+        ContactsDAOs.addContactToDb(contact);
         // THEN
         Connection connection = DataSourceFactory.getDataSource().getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM person WHERE lastname='DUVAL'");
         assertThat(resultSet.next()).isTrue();
-        assertThat(resultSet.getInt("idperson")).isEqualTo(3);
+        assertThat(resultSet.getInt("idperson")).isEqualTo(contact.getIdperson());
         assertThat(resultSet.getString("lastname")).isEqualTo("DUVAL");
         assertThat(resultSet.getString("firstname")).isEqualTo("Philippe");
         assertThat(resultSet.getString("nickname")).isEqualTo("P.DUVAL");
@@ -74,10 +73,62 @@ public class ContactsDAOTestCase {
         assertThat(resultSet.getString("email_address")).isEqualTo("philippe.duval@externe.junia.com");
         assertThat(resultSet.getDate("birth_date")).isEqualTo(Date.valueOf("2022-03-09"));
         assertThat(resultSet.getString("gender")).isEqualTo("Man");
+        assertThat(resultSet.next()).isFalse();
         resultSet.close();
         statement.close();
         connection.close();
     }
 
+    @Test
+	public void shouldGetContactsFromDb() throws Exception {
+		// WHEN
+		List<Contact> contacts = ContactsDAOs.getContactsFromDb();
+		// THEN
+		assertThat(contacts).hasSize(3);
+		assertThat(contacts).extracting("idperson","lastname","firstname","nickname","phone_number","address","email_address","birth_date","gender")
+			.containsOnly(tuple(0,"Demenez","Hugo","hdemenez","069910196727","rue jean jaures","hugo.demenez@student.junia.com",Date.valueOf("2000-03-18"),"Man"), 
+					tuple(1,"Duhamel","Alban","aduhamel","06111111111","avenue du soleil","alban.duhamel@student.junia.com",Date.valueOf("2000-09-14"),"Man"),
+					tuple(2,"Dumesge","Quentin","qdumesge","03222222228","rue de la lune","quentin.dumesge@student.junia.com",Date.valueOf("2000-10-14"),"Man"));
+	}
+    
+    @Test
+	public void shouldGetContactIdFromDb() throws Exception {
+		// WHEN
+    	Contact contact = new Contact(
+                "Duhamel",
+                "Alban",
+                "aduhamel",
+                "06111111111",
+                "avenue du soleil",
+                "alban.duhamel@student.junia.com",
+                Date.valueOf("2000-09-14"),
+                "Man");
+		contact.setIdPerson(ContactsDAOs.getContactIdFromDb(contact));
+		// THEN
+		assertThat(contact.getIdperson()).isEqualTo(1);
+	}
 
+    
+    @Test
+	public void shouldRemoveContactFromDb() throws Exception {
+		// WHEN
+    	Contact contact = new Contact(
+                "FOR",
+                "Remove",
+                "delete",
+                "6666666666",
+                "rue du neant",
+                "erase@isen.bin",
+                Date.valueOf("2000-10-14"),
+                "Female");
+    	ContactsDAOs.addContactToDb(contact);
+    	ContactsDAOs.removeContactFromDb(contact);
+		// THEN
+    	Connection connection = DataSourceFactory.getDataSource().getConnection();
+        Statement stmt = connection.createStatement();
+    	ResultSet resultSet = stmt.executeQuery("SELECT * FROM person WHERE lastname='DUVAL' AND firstname='Philippe'");
+		assertThat(resultSet.next()).isEqualTo(false);
+	}
+    
+    
 }

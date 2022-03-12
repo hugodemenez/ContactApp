@@ -64,17 +64,13 @@ public class ContactsDAOs {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return listOfContacts;
-
 	}
 
 	public static int getContactIdFromDb(Contact contact) {
-
-
 		try(Connection connection = getDataSource().getConnection()){
 			try(Statement statement = connection.createStatement()){
-				try(ResultSet results = statement.executeQuery("SELECT * FROM person")){
+				try(ResultSet results = statement.executeQuery("SELECT idperson, lastname, firstname FROM person")){
 					while(results.next()){
 						if (results.getString("lastname").equals(contact.getLastname()) && results.getString("firstname").equals(contact.getFirstname())){
 							return results.getInt("idperson");
@@ -85,29 +81,23 @@ public class ContactsDAOs {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		throw new RuntimeException("Unable to find id of the selected contact");
-
 	}
 
 	public static void removeContactFromDb(Contact contact){
 		try {
 			Connection connection = DataSourceFactory.getDataSource().getConnection();
 			Statement stmt = connection.createStatement();
-
-
+			
 			stmt.executeUpdate("DELETE FROM person WHERE idperson = "+contact.getIdperson()+";");
+			
 			stmt.close();
 			connection.close();
-			System.out.println(contact.getLastname()+contact.getFirstname()+" sucessfully removed from db");
+			System.out.println(contact.getLastname()+ " " + contact.getFirstname()+" sucessfully removed from the database");
 		}
 		catch(Exception exception){
 			System.out.println(exception.getMessage());
 		}
-
-
-
-
 	}
 	
 }
