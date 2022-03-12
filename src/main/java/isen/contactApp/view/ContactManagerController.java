@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -63,7 +64,8 @@ public class ContactManagerController {
     private ProgressIndicator indicator;
 
 
-
+    @FXML
+    private TextField searchField;
 
     // Refresh the table with contacts and clear selection
     @FXML
@@ -82,7 +84,6 @@ public class ContactManagerController {
     // Populate list with contacts inside the database
     @FXML
     public void populateContactTable(){
-
         contactsTable.setItems(ContactService.updateContacts(filter.getValue()));
         refreshContactTable();
     }
@@ -128,6 +129,37 @@ public class ContactManagerController {
         });
 
         initialize_filter();
+
+
+
+        //Initial search list
+        searchField.textProperty().addListener((observable,oldValue,newValue)->{
+                contactsTable.setItems(ContactService.getContacts().filtered(contact -> {
+                        //If no search value is entered then it displays everything
+                        if(newValue.isEmpty() || newValue.isBlank() || newValue==null) {
+                            return true;
+                        }
+
+                        String searchKeyword = newValue.toLowerCase();
+                        if(contact.getLastname().toLowerCase().contains(searchKeyword)) {
+                            return true; //Found a match in Lastname
+                        } else if(contact.getFirstname().toLowerCase().contains(searchKeyword)) {
+                            return true; //Found a match in Firstname
+                        }else if(contact.getNickname().toLowerCase().contains(searchKeyword)) {
+                            return true; //Found a match in Nickname
+                        }else if(contact.getPhone_number().toLowerCase().contains(searchKeyword)) {
+                            return true; //Found a match in PhoneNumber
+                        }else {
+                            return false; //no match found
+                        }
+                    })
+                );
+            refreshContactTable();
+
+            }
+        );
+
+
     }
 
     public void initialize_filter(){

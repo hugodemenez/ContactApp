@@ -38,7 +38,7 @@
                                  </font>
                               </Button>
                               <ComboBox fx:id="filter" onAction="#populateContactTable" prefHeight="38.0" prefWidth="173.0" promptText="Filter" styleClass="filter-button" />
-                              <TextField fx:id="questionField" prefHeight="38.0" prefWidth="712.0" promptText="Search" styleClass="search-field" />
+                              <TextField fx:id="searchField" prefHeight="38.0" prefWidth="712.0" promptText="Search" styleClass="search-field" />
                               <ProgressIndicator fx:id="indicator" progress="0.0" />
                               <Button mnemonicParsing="false" onAction="#handleClickExportContacts" styleClass="export-button" text="Export">
                                  <graphic>
