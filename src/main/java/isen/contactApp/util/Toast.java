@@ -60,10 +60,9 @@ public final class Toast
 
         FlowPane root = new FlowPane(textTitle,deleteButton,text);
         root.setHgap(10F);
-        root.setStyle("-fx-background-radius: 5; -fx-background-color: rgba(0, 0, 0, 0); -fx-padding: 15px;-fx-border-radius: 5;-fx-border-color: #F95849; -fx-border-width: 2;-fx-max-width: 80;");
+        root.setStyle("-fx-background-radius: 5; -fx-background-color: rgba(255, 255, 255, 1); -fx-padding: 15px;-fx-border-radius: 5;-fx-border-color: #F95849; -fx-border-width: 2;-fx-max-width: 80;");
         root.setOpacity(0);
-        root.setLayoutX(ownerStage.getWidth()-200F);
-        root.setLayoutY(ownerStage.getHeight()-100F);
+
 
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);

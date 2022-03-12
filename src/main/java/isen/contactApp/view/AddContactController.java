@@ -4,6 +4,7 @@ import ezvcard.Ezvcard;
 import ezvcard.VCard;
 import ezvcard.VCardVersion;
 import isen.contactApp.App;
+import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.Toast;
@@ -11,9 +12,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +67,13 @@ public class AddContactController {
     private ProgressIndicator indicator;
 
     @FXML
+    private ComboBox<String> filter;
+
+    @FXML
     public void initialize(){
+        for(String listName : ContactsDAOs.getContactListsFromDb()){
+            filter.getItems().add(listName);
+        }
 
         gender.getItems().add("Man");
         gender.getItems().add("Woman");
@@ -93,7 +103,6 @@ public class AddContactController {
         nickName.setText(contact.getNickname());
         addButton.setText("Update");
         gender.setValue(contact.getGender());
-
     }
 
 
@@ -163,21 +172,45 @@ public class AddContactController {
     // Function to call when clicking on add button
     public void handleClickAddContact(){
 
-        // If contact not null we are deleting the existing contact
-        if(contact!=null){
-            // First remove contact
-            ContactService.removeContact(contact);
-            // Then do the same as adding a new contact
+        try{
+            // If contact instantiation doesn't work, we can't continue
+            Contact newContact = new Contact(
+                    lastName.getText(),
+                    firstName.getText(),
+                    nickName.getText(),
+                    phoneNumber.getText(),
+                    address.getText(),
+                    emailAddress.getText(),
+                    new java.sql.Date(Date.from(birthDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()),
+                    gender.getValue(),
+                    filter.getValue()
+            );
+            // If contact not null we are deleting the existing contact
+            if(contact!=null){
+                // First remove contact
+                ContactService.removeContact(contact);
+                // Then do the same as adding a new contact
+            }
+
+            // Collecting fields to instantiate contact Class to pass into addContact from ContactService class
+
+            // Add contact with the service (database + contact instance) with the fully loaded contact (generated id + contact data)
+            ContactService.addContact(newContact);
+            // Change view
+            goToContactManager();
+
+        }
+        catch(Exception exception){
+            Toast.makeText(
+                    App.stage,
+                    "Contact creation issue",
+                    "Unable to create contact due to missing field",
+                    1500,
+                    500,
+                    500
+            );
         }
 
-        // Collecting fields to instantiate contact Class to pass into addContact from ContactService class
-
-        // Add contact with the service (database + contact instance) with the fully loaded contact (generated id + contact data)
-        ContactService.addContact(new Contact(lastName.getText(), firstName.getText(), nickName.getText(), phoneNumber.getText(),
-                address.getText(), emailAddress.getText(), new java.sql.Date(Date.from(birthDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()), gender.getValue()));
-
-        // Change view
-        goToContactManager();
     }
 
 

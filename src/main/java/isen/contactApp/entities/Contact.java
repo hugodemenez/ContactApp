@@ -24,6 +24,7 @@ public class Contact {
 	private String email_address;
 	private Date birth_date;
 	private String gender;
+	private String filter;
 
 	// Default constructor
 	public Contact(){
@@ -35,11 +36,12 @@ public class Contact {
 		this.email_address = "email_address";
 		this.birth_date = Date.valueOf(LocalDate.now());
 		this.gender = "Man";
+		this.filter = "Default";
 	}
 
 	// Constructor without id
 	public Contact(String lastname, String firstname, String nickname, String phone_number,
-			String address, String email_address, Date birth_date, String gender) {
+			String address, String email_address, Date birth_date, String gender,String filter) {
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.nickname = nickname;
@@ -48,11 +50,12 @@ public class Contact {
 		this.email_address = email_address;
 		this.birth_date = birth_date;
 		this.gender = gender;
+		this.filter = filter;
 	}
 
 	// Full constructor
 	public Contact(int idPerson, String lastname, String firstname, String nickname, String phone_number,
-				   String address, String email_address, Date birth_date,String gender) {
+				   String address, String email_address, Date birth_date,String gender,String filter) {
 		this.idPerson = idPerson;
 		this.lastname = lastname;
 		this.firstname = firstname;
@@ -62,6 +65,7 @@ public class Contact {
 		this.email_address = email_address;
 		this.birth_date = birth_date;
 		this.gender = gender;
+		this.filter = filter;
 	}
 
 
@@ -170,8 +174,11 @@ public class Contact {
 		this.birth_date = birth_date;
 	}
 
+	public String getFilter() {
+		return filter;
+	}
 
-    public String getAvatarName() {
+	public String getAvatarName() {
 		return switch (gender) {
 			case "man" -> "user_man";
 			case "woman" -> "user_woman";

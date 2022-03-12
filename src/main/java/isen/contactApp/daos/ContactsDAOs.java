@@ -6,6 +6,7 @@ package isen.contactApp.daos;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import isen.contactApp.entities.Contact;
 
@@ -21,7 +22,7 @@ public class ContactsDAOs {
 	
 	public static Contact addContactToDb(Contact contact) {
 		try (Connection connection = getDataSource().getConnection()) {
-	        String sqlQuery = "INSERT INTO person(lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) VALUES(?,?,?,?,?,?,?,?)";
+	        String sqlQuery = "INSERT INTO person(lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender,filter) VALUES(?,?,?,?,?,?,?,?,?)";
 	        try (PreparedStatement statement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
 	            statement.setString(1, contact.getLastname());
 	            statement.setString(2, contact.getFirstname());
@@ -31,6 +32,7 @@ public class ContactsDAOs {
 	            statement.setString(6, contact.getEmail_address());
 	            statement.setDate(7, contact.getBirth_date());
 				statement.setString(8, contact.getGender());
+				statement.setString(9, contact.getFilter());
 	            statement.executeUpdate();
 	            contact.setIdPerson(statement.getGeneratedKeys().getInt(1));
 	        }
@@ -58,7 +60,8 @@ public class ContactsDAOs {
 								results.getString("address"),
 								results.getString("email_address"),
 								results.getDate("birth_date"),
-								results.getString("gender")));
+								results.getString("gender"),
+								results.getString("filter")));
 					}
 				}
 			}
@@ -70,26 +73,7 @@ public class ContactsDAOs {
 
 	}
 
-	public static int getContactIdFromDb(Contact contact) {
 
-
-		try(Connection connection = getDataSource().getConnection()){
-			try(Statement statement = connection.createStatement()){
-				try(ResultSet results = statement.executeQuery("SELECT * FROM person")){
-					while(results.next()){
-						if (results.getString("lastname").equals(contact.getLastname()) && results.getString("firstname").equals(contact.getFirstname())){
-							return results.getInt("idperson");
-						}
-					}
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		throw new RuntimeException("Unable to find id of the selected contact");
-
-	}
 
 	public static void removeContactFromDb(Contact contact){
 		try {
@@ -100,7 +84,7 @@ public class ContactsDAOs {
 			stmt.executeUpdate("DELETE FROM person WHERE idperson = "+contact.getIdperson()+";");
 			stmt.close();
 			connection.close();
-			System.out.println(contact.getLastname()+contact.getFirstname()+" sucessfully removed from db");
+			System.out.println(contact.getLastname()+contact.getFirstname()+" successfully removed from db");
 		}
 		catch(Exception exception){
 			System.out.println(exception.getMessage());
@@ -110,5 +94,24 @@ public class ContactsDAOs {
 
 
 	}
-	
+
+	public static List<String> getContactListsFromDb() {
+		List<String> lists = new ArrayList<>();
+
+		try(Connection connection = getDataSource().getConnection()){
+			try(Statement statement = connection.createStatement()){
+				try(ResultSet results = statement.executeQuery("SELECT * FROM person")){
+					while(results.next()){
+						String filterName = results.getString("filter");
+						if (filterName!=null)lists.add(filterName);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+		return lists;
+	}
 }

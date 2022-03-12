@@ -3,18 +3,19 @@ package isen.contactApp.view;
 import ezvcard.Ezvcard;
 import ezvcard.VCard;
 import isen.contactApp.App;
+import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
 import isen.contactApp.entities.ListContacts;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
+import javafx.scene.control.*;
+import javafx.scene.control.MenuItem;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
@@ -27,6 +28,9 @@ import java.util.List;
  *
  */
 public class ContactManagerController {
+
+    @FXML
+    private ComboBox<String> filter;
 
     @FXML
     private TableView<Contact> contactsTable;
@@ -78,7 +82,7 @@ public class ContactManagerController {
     // Populate list with contacts inside the database
     @FXML
     public void populateContactTable(){
-        contactsTable.setItems(ContactService.getContacts());
+        contactsTable.setItems(ContactService.updateContacts(filter.getValue()));
         refreshContactTable();
     }
 
@@ -121,6 +125,15 @@ public class ContactManagerController {
                 }
             }
         });
+
+        initialize_filter();
+    }
+
+    public void initialize_filter(){
+
+        for(String listName :ContactsDAOs.getContactListsFromDb()){
+            filter.getItems().add(listName);
+        }
 
     }
 

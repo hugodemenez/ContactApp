@@ -2,6 +2,7 @@ package isen.contactApp.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
@@ -30,6 +31,13 @@ public class ContactService {
 
 	public static ObservableList<Contact> getContacts() {
 		return QuestionServiceHolder.INSTANCE.contacts;
+	}
+
+	public static ObservableList<Contact> updateContacts(String filter){
+		if(filter!=null){
+			return (ObservableList<Contact>) QuestionServiceHolder.INSTANCE.contacts.stream().filter(p -> filter.equals(p.getFilter()));
+		}
+		return getContacts();
 	}
 
 
