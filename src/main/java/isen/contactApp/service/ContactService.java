@@ -3,6 +3,7 @@ package isen.contactApp.service;
 import java.sql.Date;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import isen.contactApp.daos.ContactsDAOs;
 import isen.contactApp.entities.Contact;
@@ -30,12 +31,19 @@ public class ContactService {
 	}
 
 	public static ObservableList<Contact> getContacts() {
-		return QuestionServiceHolder.INSTANCE.contacts;
+
+		return ContactServiceHolder.INSTANCE.contacts;
 	}
 
 	public static ObservableList<Contact> updateContacts(String filter){
-		if(filter!=null){
-			return (ObservableList<Contact>) QuestionServiceHolder.INSTANCE.contacts.stream().filter(p -> filter.equals(p.getFilter()));
+		// If filtering
+		if(filter!=null && !filter.equals("All")){
+			List<Contact> filteredList = ContactServiceHolder.INSTANCE.contacts.stream()
+					.filter(p -> filter.equals(p.getFilter())).toList();
+			ObservableList<Contact> filteredContacts = FXCollections.observableArrayList();
+			filteredContacts.addAll(filteredList);
+			return  filteredContacts;
+
 		}
 		return getContacts();
 	}
@@ -44,19 +52,19 @@ public class ContactService {
 	// Method to add contact to the database and to the contacts instance
 	public static void addContact(Contact contact) {
 		// Add contact to the database and collect the generated id to add the fully loaded contact to the contact list
-		QuestionServiceHolder.INSTANCE.contacts.add(ContactsDAOs.addContactToDb(contact));
+		ContactServiceHolder.INSTANCE.contacts.add(ContactsDAOs.addContactToDb(contact));
 	}
 
 	// Method to remove contact from the database and from the instance
 	public static void removeContact(Contact contact) {
 		// Remove contact from the contacts instance
-		QuestionServiceHolder.INSTANCE.contacts.remove(contact);
+		ContactServiceHolder.INSTANCE.contacts.remove(contact);
 
 		// Remove contact from the database
 		ContactsDAOs.removeContactFromDb(contact);
 	}
 
-	private static class QuestionServiceHolder {
+	private static class ContactServiceHolder {
 		private static final ContactService INSTANCE = new ContactService();
 	}
 

@@ -82,6 +82,7 @@ public class ContactManagerController {
     // Populate list with contacts inside the database
     @FXML
     public void populateContactTable(){
+
         contactsTable.setItems(ContactService.updateContacts(filter.getValue()));
         refreshContactTable();
     }
@@ -130,6 +131,7 @@ public class ContactManagerController {
     }
 
     public void initialize_filter(){
+        filter.getItems().add("All");
 
         for(String listName :ContactsDAOs.getContactListsFromDb()){
             filter.getItems().add(listName);
