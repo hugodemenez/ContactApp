@@ -84,7 +84,6 @@ public class ContactsDAOs {
 			stmt.executeUpdate("DELETE FROM person WHERE idperson = "+contact.getIdperson()+";");
 			stmt.close();
 			connection.close();
-			System.out.println(contact.getLastname()+contact.getFirstname()+" successfully removed from db");
 		}
 		catch(Exception exception){
 			System.out.println(exception.getMessage());

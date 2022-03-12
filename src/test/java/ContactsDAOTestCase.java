@@ -13,6 +13,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public class ContactsDAOTestCase {
 
     @Before
@@ -118,7 +122,7 @@ public class ContactsDAOTestCase {
         // THEN
         Connection connection = DataSourceFactory.getDataSource().getConnection();
         Statement stmt = connection.createStatement();
-        ResultSet resultSet = stmt.executeQuery("SELECT * FROM person WHERE lastname='DUVAL' AND firstname='Philippe'");
+        ResultSet resultSet = stmt.executeQuery("SELECT * FROM person WHERE lastname='FOR' AND firstname='Remove'");
         assertThat(resultSet.next()).isEqualTo(false);
     }
 
