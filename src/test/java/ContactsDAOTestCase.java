@@ -30,21 +30,24 @@ public class ContactsDAOTestCase {
                         "    email_address VARCHAR(150) NULL,\n" +
                         "    birth_date DATE NULL,\n" +
                         "    gender VARCHAR(150) NULL,\n" +
-                        "    filter VARCHAR(150) NULL");
+                        "    filter VARCHAR(150) NULL);");
+
         stmt.executeUpdate("DELETE FROM person");
 
         stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender,filter) "
                 + "VALUES (0,'Demenez','Hugo','hdemenez','069910196727','rue jean jaures','hugo.demenez@student.junia.com','2000-03-18 00:00:00.000','Man','Favorites')");
 
-        stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
+        stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender,filter) "
                 + "VALUES (1,'Duhamel','Alban','aduhamel','06111111111','avenue du soleil','alban.duhamel@student.junia.com','2000-09-14 00:00:00.000','Man','Family')");
 
-        stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender) "
+        stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date,gender,filter) "
                 + "VALUES (2,'Dumesge','Quentin','qdumesge','03222222228','rue de la lune','quentin.dumesge@student.junia.com','2000-10-14 00:00:00.000','Man','Friends')");
 
         stmt.close();
         connection.close();
     }
+
+
 
     @Test
     public void shouldAddContact() throws Exception {
