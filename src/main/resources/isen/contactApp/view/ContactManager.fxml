@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -48,7 +50,11 @@
                                     <Font size="7.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="14.0" styleClass="filter-button" text="Filter">
+                              <SplitMenuButton mnemonicParsing="false" styleClass="filter-button" text="Filter">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                </items>
                                  <graphic>
                                     <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -56,11 +62,8 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
-                                 <font>
-                                    <Font size="7.0" />
-                                 </font>
-                              </Button>
-                              <TextField fx:id="questionField" prefHeight="38.0" prefWidth="460.0" promptText="Search" styleClass="search-field" />
+                              </SplitMenuButton>
+                              <TextField fx:id="questionField" prefHeight="38.0" prefWidth="413.0" promptText="Search" styleClass="search-field" />
                               <ProgressIndicator fx:id="indicator" progress="0.0" />
                               <Button mnemonicParsing="false" onAction="#handleClickExportContacts" styleClass="export-button" text="Export">
                                  <graphic>

@@ -11,10 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * @author Philippe Duval
- * 
- *         This is our main class. It extends Application, which is a JavaFX
- *         class, and thus implements the inherited methods
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
  *
  */
 public class App extends Application {

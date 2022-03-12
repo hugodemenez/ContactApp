@@ -64,16 +64,34 @@ public class ContactManagerController {
 
     // Refresh the table with contacts and clear selection
     @FXML
-    public void refreshList(){
+    public void refreshContactTable(){
+        // Contact table refresh
         contactsTable.refresh();
         contactsTable.getSelectionModel().clearSelection();
+
+    }
+
+    // Refresh the table with lists and clear selection
+    @FXML
+    public void refreshListTable(){
+        // Contact table refresh
+        listsTable.refresh();
+        listsTable.getSelectionModel().clearSelection();
+
+    }
+
+    // Populate list with lists inside the database
+    @FXML
+    public void populateListTable(){
+        listsTable.setItems(ContactService.getLists());
+        refreshListTable();
     }
 
     // Populate list with contacts inside the database
     @FXML
-    public void populateList(){
+    public void populateContactTable(){
         contactsTable.setItems(ContactService.getContacts());
-        refreshList();
+        refreshContactTable();
     }
 
     // Method called on load of the controller
@@ -90,7 +108,7 @@ public class ContactManagerController {
         nickNameColumn.setCellValueFactory(new nickNameValueFactory());
         phoneNumberColumn.setCellValueFactory(new phoneNumberValueFactory());
 
-        populateList();
+        populateContactTable();
 
         contactsTable.getSelectionModel().selectedItemProperty().addListener(new ContactsChangeListener() {
             @Override
