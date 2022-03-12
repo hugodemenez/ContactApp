@@ -6,6 +6,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public class addressValueFactory
 		implements Callback<CellDataFeatures<Contact, String>, ObservableValue<String>> {
 

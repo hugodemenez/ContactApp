@@ -9,6 +9,10 @@ import javafx.util.Callback;
 
 import java.sql.Date;
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public class birthDateValueFactory
 		implements Callback<CellDataFeatures<Contact, Date>, ObservableValue<Date>> {
 

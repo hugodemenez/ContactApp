@@ -13,7 +13,7 @@ import static isen.contactApp.daos.DataSourceFactory.getDataSource;
 
 
 /**
- * @author dumes
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
  *
  */
 public class ContactsDAOs {

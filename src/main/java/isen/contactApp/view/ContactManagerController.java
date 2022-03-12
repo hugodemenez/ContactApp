@@ -22,6 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public class ContactManagerController {
 
     @FXML

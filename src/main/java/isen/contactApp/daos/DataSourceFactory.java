@@ -4,6 +4,10 @@ import javax.sql.DataSource;
 
 import org.sqlite.SQLiteDataSource;
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public class DataSourceFactory {
 
 	private static SQLiteDataSource dataSource;

@@ -4,6 +4,10 @@ import isen.contactApp.entities.Contact;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public abstract class ContactsChangeListener implements ChangeListener<Contact> {
 
 	@Override

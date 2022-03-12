@@ -21,6 +21,10 @@ import java.sql.Date;
 import java.time.ZoneId;
 import java.util.Locale;
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public class AddContactController {
     @FXML
     private TextField lastName;

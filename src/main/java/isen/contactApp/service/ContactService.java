@@ -8,6 +8,10 @@ import isen.contactApp.entities.Contact;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
+ *
+ */
 public class ContactService {
 
 	private final ObservableList<Contact> contacts;

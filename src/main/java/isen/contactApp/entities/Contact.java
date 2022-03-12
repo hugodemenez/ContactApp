@@ -10,7 +10,7 @@ import java.sql.Date; //Format AAAA-MM-JJ
 import java.time.LocalDate;
 
 /**
- * @author dumes
+ * @author Quentin DUMESGE, Hugo DEMENEZ, Alban DUHAMEL
  *
  */
 public class Contact {
