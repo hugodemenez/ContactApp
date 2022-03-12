@@ -58,8 +58,7 @@ public class ContactManagerController {
     @FXML
     private ProgressIndicator indicator;
 
-    @FXML
-    private TableView<ListContacts> listsTable;
+
 
 
     // Refresh the table with contacts and clear selection
@@ -71,21 +70,10 @@ public class ContactManagerController {
 
     }
 
-    // Refresh the table with lists and clear selection
-    @FXML
-    public void refreshListTable(){
-        // Contact table refresh
-        listsTable.refresh();
-        listsTable.getSelectionModel().clearSelection();
 
-    }
 
-    // Populate list with lists inside the database
-    @FXML
-    public void populateListTable(){
-        listsTable.setItems(ContactService.getLists());
-        refreshListTable();
-    }
+
+
 
     // Populate list with contacts inside the database
     @FXML
