@@ -51,7 +51,7 @@
                                     </ImageView>
                                  </graphic>
                               </SplitMenuButton>
-                              <TextField fx:id="questionField" prefHeight="38.0" prefWidth="772.0" promptText="Search" styleClass="search-field" />
+                              <TextField fx:id="keywordTextField" prefHeight="38.0" prefWidth="772.0" promptText="Search" styleClass="search-field" />
                               <ProgressIndicator fx:id="indicator" progress="0.0" />
                               <Button mnemonicParsing="false" onAction="#handleClickExportContacts" styleClass="export-button" text="Export">
                                  <graphic>
