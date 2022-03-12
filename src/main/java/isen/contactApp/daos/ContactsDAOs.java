@@ -17,7 +17,6 @@ import static isen.contactApp.daos.DataSourceFactory.getDataSource;
  *
  */
 public class ContactsDAOs {
-
 	
 	public static Contact addContactToDb(Contact contact) {
 		try (Connection connection = getDataSource().getConnection()) {
