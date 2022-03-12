@@ -22,7 +22,6 @@
                <children>
                   <AnchorPane fx:id="formPane" prefHeight="598.0" prefWidth="1198.0" styleClass="split-pane">
                      <children>
-                        <TextField layoutX="14.0" layoutY="21.0" maxHeight="24.0" minHeight="24.0" promptText="Default List Name" styleClass="title-text" text="Work" />
                         <FlowPane hgap="18.0" layoutX="5.0" layoutY="54.0" prefHeight="40.0" prefWidth="1172.0" prefWrapLength="0.0" vgap="12.0">
                            <children>
                               <Button mnemonicParsing="false" onMouseClicked="#handleClickAddContact" prefHeight="33.0" styleClass="add-button" text="Add">
