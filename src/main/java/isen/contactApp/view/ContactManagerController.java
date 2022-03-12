@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -63,6 +64,8 @@ public class ContactManagerController {
     @FXML
     private ProgressIndicator indicator;
 
+    @FXML
+    private AnchorPane toastPane;
 
     @FXML
     private TextField searchField;
@@ -190,7 +193,13 @@ public class ContactManagerController {
 
         // Checking list size, if empty toast the user
         if(contactsTable.getItems().isEmpty()){
-            Toast.makeText(App.stage,"Export Error","There is not contact to export !",1500,500,500);
+            Toast.makeText(
+                    toastPane,
+                    "Export Error",
+                    "There is not contact to export !",
+                    1500,
+                    500,
+                    500);
         }
 
         for(Contact contact : contactsTable.getItems()){
@@ -215,7 +224,13 @@ public class ContactManagerController {
 
         } catch (IOException e) {
             // If there is an exception we toast the user
-            Toast.makeText(App.stage,"Export Error","Unable to export contact",1500,500,500);
+            Toast.makeText(
+                    toastPane,
+                    "Export Error",
+                    "Unable to export contact",
+                    1500,
+                    500,
+                    500);
         }
     }
 

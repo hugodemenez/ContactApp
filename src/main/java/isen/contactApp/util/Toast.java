@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -25,13 +26,8 @@ import static javafx.application.Platform.exit;
 
 public final class Toast
 {
-    public static void makeText(Stage ownerStage, String toastTitle,String toastMsg, int toastDelay, int fadeInDelay, int fadeOutDelay)
+    public static void makeText(AnchorPane pane, String toastTitle,String toastMsg, int toastDelay, int fadeInDelay, int fadeOutDelay)
     {
-        Stage toastStage=new Stage();
-        toastStage.initOwner(ownerStage);
-        toastStage.setResizable(false);
-        toastStage.initStyle(StageStyle.TRANSPARENT);
-
         Button deleteButton = new Button();
         deleteButton.setText("X");
         deleteButton.setFont(Font.font("Hellix", 16));
@@ -41,10 +37,12 @@ public final class Toast
                 -fx-font-size: 12pt;
                 -fx-text-fill: #000000;
                 -fx-background-insets: 0 0 0 0, 0, 1, 2;""".indent(4));
+
+
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                toastStage.close();
+                pane.setVisible(false);
             }
         });
 
@@ -63,14 +61,10 @@ public final class Toast
         root.setStyle("-fx-background-radius: 5; -fx-background-color: rgba(255, 255, 255, 1); -fx-padding: 15px;-fx-border-radius: 5;-fx-border-color: #F95849; -fx-border-width: 2;-fx-max-width: 80;");
         root.setOpacity(0);
 
-
-        Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        toastStage.setScene(scene);
-        toastStage.show();
+        pane.getChildren().addAll(root);
 
         Timeline fadeInTimeline = new Timeline();
-        KeyFrame fadeInKey1 = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue (toastStage.getScene().getRoot().opacityProperty(), 1));
+        KeyFrame fadeInKey1 = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue (pane.opacityProperty(), 1));
         fadeInTimeline.getKeyFrames().add(fadeInKey1);
         fadeInTimeline.setOnFinished((ae) ->
         {
@@ -84,9 +78,9 @@ public final class Toast
                     e.printStackTrace();
                 }
                 Timeline fadeOutTimeline = new Timeline();
-                KeyFrame fadeOutKey1 = new KeyFrame(Duration.millis(fadeOutDelay), new KeyValue (toastStage.getScene().getRoot().opacityProperty(), 0));
+                KeyFrame fadeOutKey1 = new KeyFrame(Duration.millis(fadeOutDelay), new KeyValue (pane.opacityProperty(), 0));
                 fadeOutTimeline.getKeyFrames().add(fadeOutKey1);
-                fadeOutTimeline.setOnFinished((aeb) -> toastStage.close());
+                fadeOutTimeline.setOnFinished((aeb) -> pane.setVisible(false));
                 fadeOutTimeline.play();
             }).start();
         });

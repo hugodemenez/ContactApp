@@ -16,6 +16,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
 import java.awt.*;
@@ -68,6 +69,10 @@ public class AddContactController {
 
     @FXML
     private ComboBox<String> filter;
+
+
+    @FXML
+    private AnchorPane toastPane;
 
     @FXML
     public void initialize(){
@@ -130,7 +135,7 @@ public class AddContactController {
             }
         }
         else{
-            Toast.makeText(App.stage,"Export error" ,"Contact not created yet !", 1500, 500, 500);
+            Toast.makeText(toastPane,"Export error" ,"Contact not created yet !", 1500, 500, 500);
         }
     }
 
@@ -156,7 +161,7 @@ public class AddContactController {
             ContactManagerController.goTo();
         }
 
-        Toast.makeText(App.stage,"Deletion success" ,"Contact successfully deleted !", 1500, 500, 500);
+        Toast.makeText(toastPane,"Deletion success" ,"Contact successfully deleted !", 1500, 500, 500);
 
     }
 
@@ -207,7 +212,7 @@ public class AddContactController {
         }
         catch(Exception exception){
             Toast.makeText(
-                    App.stage,
+                    toastPane,
                     "Contact creation issue",
                     "Unable to create contact due to missing field",
                     1500,
