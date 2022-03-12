@@ -71,8 +71,12 @@ public class AddContactController {
 
     @FXML
     public void initialize(){
+
+        // Setting up filter options
         for(String listName : ContactsDAOs.getContactListsFromDb()){
-            filter.getItems().add(listName);
+            if (!filter.getItems().contains(listName)) {
+                filter.getItems().add(listName);
+            }
         }
 
         gender.getItems().add("Man");
@@ -103,6 +107,7 @@ public class AddContactController {
         nickName.setText(contact.getNickname());
         addButton.setText("Update");
         gender.setValue(contact.getGender());
+        filter.setValue(contact.getFilter());
     }
 
 

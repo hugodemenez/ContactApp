@@ -165,8 +165,10 @@ public class ContactManagerController {
     public void initialize_filter(){
         filter.getItems().add("All");
 
-        for(String listName :ContactsDAOs.getContactListsFromDb()){
-            filter.getItems().add(listName);
+        for(String listName : ContactsDAOs.getContactListsFromDb()){
+            if (!filter.getItems().contains(listName)) {
+                filter.getItems().add(listName);
+            }
         }
 
     }
