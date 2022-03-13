@@ -52,7 +52,7 @@
                   <Insets left="12.0" />
                </padding>
             </FlowPane>
-            <TableView fx:id="contactsTable" layoutX="14.0" layoutY="109.0" prefHeight="467.0" prefWidth="1162.0">
+            <TableView fx:id="contactsTable" layoutX="14.0" layoutY="109.0" prefHeight="420.0" prefWidth="1162.0">
               <columns>
                 <TableColumn fx:id="lastNameColumn" prefWidth="74.0" text="Last Name" />
                   <TableColumn fx:id="firstNameColumn" prefWidth="86.0" text="First Name" />
@@ -63,7 +63,7 @@
                   <TableColumn fx:id="emailAddressColumn" maxWidth="582.0" minWidth="-1.0" prefWidth="353.0" text="Email Address" />
               </columns>
             </TableView>
-            <DialogPane fx:id="toastPane" layoutX="816.0" layoutY="584.0" prefHeight="52.0" prefWidth="360.0" />
+            <DialogPane fx:id="toastPane" layoutX="827.0" layoutY="529.0" maxHeight="70.0" maxWidth="350.0" minHeight="70.0" minWidth="350.0" prefHeight="70.0" prefWidth="350.0" />
          </children>
       </AnchorPane>
    </children>
