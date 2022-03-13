@@ -79,11 +79,6 @@ public class ContactManagerController {
 
     }
 
-
-
-
-
-
     // Populate list with contacts inside the database
     @FXML
     public void populateContactTable(){
@@ -133,8 +128,6 @@ public class ContactManagerController {
 
         initialize_filter();
 
-
-
         //Initial search list
         searchField.textProperty().addListener((observable,oldValue,newValue)->{
                 contactsTable.setItems(ContactService.getContacts().filtered(contact -> {
@@ -161,7 +154,6 @@ public class ContactManagerController {
 
             }
         );
-
 
     }
 
@@ -234,9 +226,8 @@ public class ContactManagerController {
         }
     }
 
-
     // Change view to the FXML linked to the controller ContactManager
-    public static void goTo(){
+    public static void goTo() {
         App.showView("ContactManager");
     }
 
