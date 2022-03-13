@@ -1,0 +1,27 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Demenez;Hugo
+NICKNAME:hdemenez
+BDAY:2000-03-18
+ADR:;;rue jean jaures
+EMAIL:hugo.demenez@student.junia.com
+TEL:069910196727
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Duhamel;Alban
+NICKNAME:aduhamel
+BDAY:2000-09-14
+ADR:;;avenue du soleil
+EMAIL:alban.duhamel@student.junia.com
+TEL:06111111111
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Dumesge;Quentin
+NICKNAME:qdumesge
+BDAY:2000-10-14
+ADR:;;rue de la lune
+EMAIL:quentin.dumesge@student.junia.com
+TEL:03222222228
+END:VCARD

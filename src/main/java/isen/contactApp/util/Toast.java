@@ -40,7 +40,7 @@ public final class Toast
                 -fx-font-size: 12pt;
                 -fx-text-fill: #000000;
                 -fx-background-insets: 0 0 0 0, 0, 1, 2;""".indent(4));
-
+        deleteButton.setAlignment(Pos.CENTER_RIGHT);
 
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -61,13 +61,13 @@ public final class Toast
 
         FlowPane root = new FlowPane();
         root.getChildren().addAll(textTitle,deleteButton,text);
+        root.setHgap(100F);
 
 
-
-        pane.setContent(root);
+        pane.setHeader(root);
 
         pane.setStyle("-fx-background-radius: 5; -fx-background-color: rgba(255, 255, 255, 1); -fx-padding: 15px;-fx-border-radius: 5;-fx-border-color: #F95849; -fx-border-width: 2;-fx-max-width: 80;");
-/*
+
         Timeline fadeInTimeline = new Timeline();
         KeyFrame fadeInKey1 = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue (pane.opacityProperty(), 1));
         fadeInTimeline.getKeyFrames().add(fadeInKey1);
@@ -91,6 +91,6 @@ public final class Toast
         });
         fadeInTimeline.play();
 
- */
+
     }
 }
