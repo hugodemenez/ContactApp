@@ -8,6 +8,7 @@ import isen.contactApp.entities.Contact;
 import isen.contactApp.entities.ListContacts;
 import isen.contactApp.service.ContactService;
 import isen.contactApp.util.*;
+import javafx.animation.KeyValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -94,7 +95,7 @@ public class ContactManagerController {
     // Method called on load of the controller
     @FXML
     private void initialize(){
-
+        toastPane.setVisible(false);
         // Setting up the columns
         addressColumn.setCellValueFactory(new addressValueFactory());
         birthDateColumn.setCellValueFactory(new birthDateValueFactory());
@@ -200,6 +201,7 @@ public class ContactManagerController {
                     1500,
                     500,
                     500);
+            return;
         }
 
         for(Contact contact : contactsTable.getItems()){
