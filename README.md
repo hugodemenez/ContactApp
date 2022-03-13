@@ -96,8 +96,8 @@ We decided to add some filter functionality. You can add a filter when you creat
 You can search by name, surname, nickname, phone number or email adress through the search field.
 
 # Demo App 
-<a href = "/assets/Demo.gif">
-  <img src ="/assets/Demo.gif" alt="Demo Gif"/>
+<a href = "/assets/DemoApp.gif">
+  <img src ="/assets/DemoApp.gif" alt="Demo Gif"/>
 </a>
 
 # Encountered issues
