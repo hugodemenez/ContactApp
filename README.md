@@ -23,6 +23,8 @@
   - [Delete a person](#delete-a-person)
   - [Export functionality that takes all the data in the database and store it in a vCard](#export-functionality-that-takes-all-the-data-in-the-database-and-store-it-in-a-vcard)
   - [Dynamic profile picture depending on gender](#dynamic-profile-picture-depending-on-gender)
+  - [Filter](#filter)
+  - [Search](#search)
 - [Demo App](#demo-app)
 - [Encountered issues](#encountered-issues)
   - [Check boxes](#check-boxes)
@@ -85,6 +87,13 @@ The image picture inside the contact description is linked to the gender.
 
 In face we had another thing in minde : [Custom pictures](#custom-pictures)
 
+## Filter
+
+We decided to add some filter functionality. You can add a filter when you create / update a contact. You can provide a custom filter or use the filter already assigned to contacts inside the database. You
+
+## Search
+
+You can search by name, surname, nickname, phone number or email adress through the search field.
 
 # Demo App 
 <a href = "/assets/Demo.gif">
@@ -114,3 +123,4 @@ Since we worked on an Android project, we dealt with toast and its implementatio
 We found out that a community member from stackoverflow had done something similar inside a toast class : https://stackoverflow.com/questions/26792812/android-toast-equivalent-in-javafx
 
 We took his class and modified it in order to fit our needs. It is quite functional and beautiful as we planned.
+
