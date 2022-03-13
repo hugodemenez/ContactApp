@@ -45,7 +45,7 @@ public class App extends Application {
 		mainLayout = loadFXML("HeaderBar");
 
 		// Defining main Scene with its layout
-		scene = new Scene(mainLayout, 1200, 600);
+		scene = new Scene(mainLayout, 1200, 650);
 
 		// Setting up the scene to the app / stage
 		stage.setScene(scene);

@@ -72,7 +72,7 @@ public class AddContactController {
 
 
     @FXML
-    private AnchorPane toastPane;
+    private DialogPane toastPane;
 
     @FXML
     public void initialize(){

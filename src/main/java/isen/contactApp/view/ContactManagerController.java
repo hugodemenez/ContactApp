@@ -65,7 +65,7 @@ public class ContactManagerController {
     private ProgressIndicator indicator;
 
     @FXML
-    private AnchorPane toastPane;
+    private DialogPane toastPane;
 
     @FXML
     private TextField searchField;

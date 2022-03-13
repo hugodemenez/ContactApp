@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -26,8 +28,9 @@ import static javafx.application.Platform.exit;
 
 public final class Toast
 {
-    public static void makeText(AnchorPane pane, String toastTitle,String toastMsg, int toastDelay, int fadeInDelay, int fadeOutDelay)
+    public static void makeText(DialogPane pane, String toastTitle, String toastMsg, int toastDelay, int fadeInDelay, int fadeOutDelay)
     {
+        pane.setVisible(true);
         Button deleteButton = new Button();
         deleteButton.setText("X");
         deleteButton.setFont(Font.font("Hellix", 16));
@@ -56,13 +59,15 @@ public final class Toast
         text.setFill(Color.BLACK);
         text.setTextAlignment(TextAlignment.LEFT);
 
-        FlowPane root = new FlowPane(textTitle,deleteButton,text);
-        root.setHgap(10F);
-        root.setStyle("-fx-background-radius: 5; -fx-background-color: rgba(255, 255, 255, 1); -fx-padding: 15px;-fx-border-radius: 5;-fx-border-color: #F95849; -fx-border-width: 2;-fx-max-width: 80;");
-        root.setOpacity(0);
+        FlowPane root = new FlowPane();
+        root.getChildren().addAll(textTitle,deleteButton,text);
 
-        pane.getChildren().addAll(root);
 
+
+        pane.setContent(root);
+
+        pane.setStyle("-fx-background-radius: 5; -fx-background-color: rgba(255, 255, 255, 1); -fx-padding: 15px;-fx-border-radius: 5;-fx-border-color: #F95849; -fx-border-width: 2;-fx-max-width: 80;");
+/*
         Timeline fadeInTimeline = new Timeline();
         KeyFrame fadeInKey1 = new KeyFrame(Duration.millis(fadeInDelay), new KeyValue (pane.opacityProperty(), 1));
         fadeInTimeline.getKeyFrames().add(fadeInKey1);
@@ -85,5 +90,7 @@ public final class Toast
             }).start();
         });
         fadeInTimeline.play();
+
+ */
     }
 }
