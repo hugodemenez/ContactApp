@@ -28,6 +28,7 @@
   - [Check boxes](#check-boxes)
   - [Lists of contacts](#lists-of-contacts)
   - [Custom pictures](#custom-pictures)
+  - [Toast](#toast)
 
 ***
 
@@ -106,3 +107,10 @@ But since everything has to be listed inside a database, we didn't manage to fig
 
 We wanted to link a custom picture to the contact, however since we didn't manage to access files outside the project, like /Users/
 we didn't want to create issues. We also tried to use images from the web but it was in BufferImage format and we didn't manage to cast them into javafx.Image class.
+
+## Toast
+
+Since we worked on an Android project, we dealt with toast and its implementation was very straight forward. However, there is no toast implementation in JavaFX. That's why we searched for a library which could provide some toast functionality.
+We found out that a community member from stackoverflow had done something similar inside a toast class : https://stackoverflow.com/questions/26792812/android-toast-equivalent-in-javafx
+
+We took his class and modified it in order to fit our needs. It is quite functional and beautiful as we planned.
